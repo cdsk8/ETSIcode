@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 using namespace std;
@@ -23,10 +24,10 @@ void Fecha::leer(){
 
 int main(){
 	Fecha f;
-	
+
 	f.leer();
 	cout << "El año introducido " << (f.bisiesto()?"si":"no") << " es bisiesto.\n\n";
-	
+
 	system("pause");
 	return 0;
 }

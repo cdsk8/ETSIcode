@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 #define k 9e9
@@ -39,7 +40,7 @@ int main(){
 		cout << "¿Desea ejecutar de nuevo con otros datos? (si, no): ";
 		cin >> respuesta;
 	}while(respuesta == "si");
-	
+
 	system("cls");
 	cout << "Gracias por usar software B0vE.\n\n";
 

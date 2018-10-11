@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -25,22 +26,22 @@ void vector::cargar(){
 int vector::comparar(){
 	int i = 0;
 	int identicas = 0;
-	
+
 	while(!identicas and i < 10){
 		if(tab1[i] != tab2[i])
 			identicas = 1;
 		i++;
 	}
-	
+
 	return identicas;
 }
 
 int main(void){
 	vector v;
-	
+
 	v.cargar();
 	cout << "Las tablas son " << (v.comparar()?"diferentes":"identicas") << ".\n\n";
-	
+
 	system("pause");
 	return 0;
 }

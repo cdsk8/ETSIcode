@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -26,16 +27,16 @@ int Numero::mcd(){
 			b -=a;
 		}
 	}
-	
+
 	return a;
 }
 
 int main(){
 	Numero n;
-	
+
 	n.informacion();
 	cout << "El maximo comun divisor es " << n.mcd() << ".\n\n";
-	
+
 	system("pause");
 	return 0;
 }

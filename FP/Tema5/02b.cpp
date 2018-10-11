@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <conio.h>
 
 using namespace std;
@@ -66,26 +67,26 @@ bool TicTacToe::ComprobarDiagonal(char ficha, int fila, int columna){
 	}else if((fila == 2 and columna == 0) or (fila == 0 and columna == 2)){
 		return Tablero[2][0] == ficha and Tablero[1][1] == ficha and Tablero[0][2] == ficha;
 	}else{
-		return false;	
+		return false;
 	}
-	
+
 }
 bool TicTacToe::TableroCompleto(){
 	bool completo = true;
 	int i, j;
-	
+
 	i = j = 0;
 	while(j < 3 and completo){
 		if(Tablero[i][j] == ' ')
 			completo = false;
-		
+
 		i++;
 		if(i == 3){
 			i = 0;
 			j++;
 		}
 	}
-	
+
 	return completo;
 }
 
@@ -93,9 +94,9 @@ bool TicTacToe::TableroCompleto(){
 void pedirPosicion(char ficha, int &fila, int &columna){
 	bool error;
 	char ch;
-	
+
 	cout << "Jugador " << ficha << ", es su turno.\n";
-	
+
 	do{
 		error = false;
 		switch(getche()){
@@ -141,7 +142,7 @@ void pedirPosicion(char ficha, int &fila, int &columna){
 				break;
 		}
 	}while(error);
-	
+
 	cout << "\n";
 }
 
@@ -151,19 +152,19 @@ int main(void){
 	bool error, continuar = true;
 	char turno = 'X';
 	int fila, columna;
-	
+
 	while(continuar){
 		do{
 			t.Pintar();
 			pedirPosicion(turno, fila, columna);
-			
+
 			if(t.PonerFicha(turno, fila, columna)){
 				error = false;
 			}else{
 				error = true;
 			}
 		}while(error);
-		
+
 		if(t.ComprobarColumna(turno, columna) or t.ComprobarFila(turno, fila) or t.ComprobarDiagonal(turno, fila, columna)){
 			t.Pintar();
 			cout << "El jugador " << turno << " ha ganado la partida.\n\nJugar otra vez? (si, no) ";
@@ -180,7 +181,7 @@ int main(void){
 					turno = 'X';
 				continue;
 			}
-			
+
 		}
 		if(respuesta == "si"){
 			t.LimpiarTablero();
@@ -188,6 +189,6 @@ int main(void){
 			continuar = false;
 		}
 	}
-	
+
 	return 0;
 }

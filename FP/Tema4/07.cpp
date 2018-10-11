@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ class merges{
 
 void merges::cargar(){
 	bool error = false;
-	
+
 	do{
 		cout << "Introduzca el numero de elementos que desea colocar en la primera tabla: ";
 		cin >> numuno;
@@ -27,7 +28,7 @@ void merges::cargar(){
 			error = false;
 		}
 	}while(error);
-	
+
 	for(int i = 0; i < numuno; i++){
 		do{
 			cout << "Introduzca un numero para la primera tabla: ";
@@ -40,9 +41,9 @@ void merges::cargar(){
 			}
 		}while(error);
 	}
-	
+
 	cout << "\n";
-	
+
 	do{
 		cout << "Introduzca el numero de elementos que desea colocar en la segunda tabla: ";
 		cin >> numdos;
@@ -53,7 +54,7 @@ void merges::cargar(){
 			error = false;
 		}
 	}while(error);
-	
+
 	for(int i = 0; i < numdos; i++){
 		do{
 			cout << "Introduzca un numero para la segunda tabla: ";
@@ -66,14 +67,14 @@ void merges::cargar(){
 			}
 		}while(error);
 	}
-	
+
 	cout << "\n";
 }
 
 void merges::mezclar(){
 	int i, j, k;
 	i = j = k = 0;
-	
+
 	while(i < numuno or j < numdos){
 		if((i != numuno and uno[i] < dos[j]) or j == numdos){
 			fus[k] = uno[i];
@@ -108,12 +109,12 @@ void merges::verfusion(){
 
 int main(void){
 	merges m;
-	
+
 	m.cargar();
 	m.mezclar();
 	m.ver();
 	m.verfusion();
-	
+
 	system("pause");
 	return 0;
 }

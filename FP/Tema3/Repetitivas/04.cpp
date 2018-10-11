@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -24,10 +25,10 @@ void TablaMultiplicar::MostrarTabla(){
 
 int main(){
 	TablaMultiplicar tm;
-	
+
 	tm.PedirNoTabla();
 	tm.MostrarTabla();
-	
+
 	system("pause");
 	return 0;
 }

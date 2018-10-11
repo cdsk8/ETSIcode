@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #define M 10
 #define N 15
@@ -24,10 +25,10 @@ void tres::cargar(){
 int tres::encontrar(){
 	int buscado, j, i = 0;
 	int encontrado = 0;
-	
+
 	cout << "Introduzca el numero que desea buscar: ";
 	cin >> buscado;
-	
+
 	while(!encontrado and i < M){
 		j = 0;
 		while(!encontrado and j < N){
@@ -37,16 +38,16 @@ int tres::encontrar(){
 		}
 		i++;
 	}
-	
+
 	return encontrado;
 }
 
 int main(void){
 	tres t;
-	
+
 	t.cargar();
 	cout << "\nEl numero que buscaba " << (t.encontrar()?"si":"no") << " se encuentra en la tabla.\n\n";
-	
+
 	system("pause");
 	return 0;
 }

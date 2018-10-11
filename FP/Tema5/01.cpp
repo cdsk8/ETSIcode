@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <string.h>
 #include <conio.h>
 
@@ -88,7 +89,7 @@ int almacen::existe(cad nom){
 	bool iguales;
 	pos = -1;
 	i = 0;
-	
+
 	while(i < MAX and pos == -1){
 		iguales = true;
 		j = 0;
@@ -102,7 +103,7 @@ int almacen::existe(cad nom){
 			pos = i;
 		i++;
 	}
-	
+
 	return pos;
 }
 
@@ -113,12 +114,12 @@ void almacen::verprod(int pos, tprod &prod){
 int almacen::insertar(tprod P){
 	if(nprod == MAX)
 		return 2;
-	
+
 	cad nombre;
 	P.leenombre(nombre);
 	if(existe(nombre) != -1)
 		return 1;
-		
+
 	productos[nprod] = P;
 	nprod++;
 	return 0;
@@ -144,7 +145,7 @@ void almacen::vender(int pos, int cant){
 	int stock;
 	float precio = productos[pos].leeprecio();
 	productos[pos].leestock(stock);
-	
+
 	if(stock >= cant){
 		productos[pos].cambiarstock(stock-cant);
 		cout << "Total a pagar: " << (cant*precio) << "e.\n";
@@ -177,9 +178,9 @@ int main(void){
 	float pordP_tmp;
 	int i, pos;
 	char ch;
-	
+
 	almacen a;
-	
+
 	do{
 		switch(menu()){
 			case 'A':
@@ -190,7 +191,7 @@ int main(void){
 			case 'B':
 			case 'b':
 				system("cls");
-				
+
 				cout << "Introduzca el nombre: ";
 				i = 0;
 				do{
@@ -213,15 +214,15 @@ int main(void){
 					}
 				}while(ch != '\r');
 				prod_tmp.cambiarnombre(prodN_tmp);
-				
+
 				cout << "Introduzca el precio: ";
 				cin >> pordP_tmp;
 				prod_tmp.cambiarprecio(pordP_tmp);
-				
+
 				cout << "Introduzca el stock: ";
 				cin >> prodS_tmp;
 				prod_tmp.cambiarstock(prodS_tmp);
-				
+
 				switch(a.insertar(prod_tmp)){
 					case 2:
 						cout << "\nEl almacen esta lleno.\n";
@@ -237,7 +238,7 @@ int main(void){
 			case 'C':
 			case 'c':
 				system("cls");
-				
+
 				cout << "\nIntroduzca el nombre del producto a vender: ";
 				i = 0;
 				do{
@@ -259,14 +260,14 @@ int main(void){
 							i++;
 					}
 				}while(ch != '\r');
-				
+
 				pos = a.existe(prodN_tmp);
 				if(pos == -1){
 					cout << "\nNo existe ningun producto con ese nombre.\n";
 				}else{
 					cout << "\nIntroduzca la cantidad de productos a vender: ";
 					cin >> prodS_tmp;
-					
+
 					a.vender(pos, prodS_tmp);
 				}
 				break;
@@ -281,14 +282,14 @@ int main(void){
 				continuar = false;
 				break;
 		}
-		
+
 		if(continuar){
 			cout << "\nPulse una tecla para regresar al menu.";
 			cin.ignore();
 			cin.ignore();
 		}
 	}while(continuar);
-	
+
 	return 0;
 }
 
@@ -300,7 +301,7 @@ int main(void){
 	int accion, i, nuevoS;
 	float nuevoP;
 	char ch;
-	
+
 	do{
 		p.leenombre(nomb);
 		cout << "-------------------> " << nomb << " <-------------------\n"
@@ -312,7 +313,7 @@ int main(void){
 			"6.Salir.\n\n"
 			"Accion: ";
 		cin >> accion;
-		
+
 		switch(accion){
 			case 1:
 				cout << "\nIntroduzca el nuevo nombre: ";
@@ -378,7 +379,7 @@ int main(void){
 				break;
 		}
 	}while(accion != 6);
-	
+
 	return 0;
 }
 */

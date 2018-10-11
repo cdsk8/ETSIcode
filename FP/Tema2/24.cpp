@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 #define pi 3.1415

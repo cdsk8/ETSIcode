@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <string.h>
 #include <conio.h>
 
@@ -102,13 +103,13 @@ void Cliente::DameDireccion(Cadena pDir){
 int Cliente::BuscarCuenta(int pNoCuenta){
 	int i, pos;
 	i = pos = -1;
-	
+
 	while(i < NoCuentas and pos == -1){
 		i++;
 		if(Cuentas[i].DameNoCuenta() == pNoCuenta)
 			pos = i;
 	}
-	
+
 	return pos;
 }
 
@@ -172,14 +173,14 @@ int BuscarCliente(Cliente Ctes[MAX_CLIENTES], int NCtes, Cadena Nombre){
 	int i, pos;
 	i = pos = -1;
 	Cadena busqueda;
-	
+
 	while(i < NCtes and pos == -1){
 		i++;
 		Ctes[i].DameNombre(busqueda);
 		if(strcmp(busqueda, Nombre) == 0)
 			pos = i;
 	}
-	
+
 	return pos;
 }
 
@@ -187,19 +188,19 @@ int BuscarCliente(Cliente Ctes[MAX_CLIENTES], int NCtes, Cadena Nombre){
 int BuscarCuenta(Cuenta Ctas[MAX_CUENTAS], int NCuentas, int NoCuenta){
 	int i, pos;
 	i = pos = -1;
-	
+
 	while(i < NCuentas and pos == -1){
 		i++;
 		if(Ctas[i].DameNoCuenta() == NoCuenta)
 			pos = i;
 	}
-	
+
 	return pos;
 }
 
 int MenuCuentas(){
 	int respuesta;
-	
+
 	system("cls");
 	cout << "    Menu Gestion de Cuentas\n"
 			"1 Anadir una cuenta al cliente\n"
@@ -231,13 +232,13 @@ int Menu(){
 int main(void){
 	Cliente Datos[MAX_CLIENTES];
 	int nClientes;
-	
+
 	char ch;
 	bool continuar = true;
 	Cadena nombre, direccion;
 	int i, pos;
-	
-	
+
+
 	do{
 		ch = Menu();
 		system("cls");
@@ -265,7 +266,7 @@ int main(void){
 								i++;
 						}
 					}while(ch != '\r');
-					
+
 					cout << "Introduzca la direccion del cliente: ";
 					i = 0;
 					do{
@@ -287,10 +288,10 @@ int main(void){
 								i++;
 						}
 					}while(ch != '\r');
-					
+
 					Datos[nClientes].ActualizarCliente(nombre, direccion);
 					nClientes++;
-					
+
 					cout << "Cliente creado correctamente.\n\n";
 				}else{
 					cout << "Error, limite de clietnes almacenados alcanzado.\n\n";
@@ -318,7 +319,7 @@ int main(void){
 							i++;
 					}
 				}while(ch != '\r');
-				
+
 				pos = BuscarCliente(Datos, nClientes, nombre);
 				if(pos == -1){
 					cout << "Error, cliente no encontrado.\n\n";
@@ -344,9 +345,9 @@ int main(void){
 								i++;
 						}
 					}while(ch != '\r');
-					
+
 					Datos[pos].ActualizarCliente(nombre, direccion);
-					
+
 					cout << "Cliente actualizado correctamente.\n\n";
 				}
 				break;
@@ -372,7 +373,7 @@ int main(void){
 							i++;
 					}
 				}while(ch != '\r');
-				
+
 				pos = BuscarCliente(Datos, nClientes, nombre);
 				if(pos == -1){
 					cout << "Error, cliente no encontrado.\n\n";
@@ -407,19 +408,19 @@ int main(void){
 							i++;
 					}
 				}while(ch != '\r');
-				
+
 				pos = BuscarCliente(Datos, nClientes, nombre);
 				if(pos == -1){
 					cout << "Error, cliente no encontrado.\n\n";
 				}else{
-					
+
 					int supos = pos;
 					bool submenu = true;
 					int numero;
 					float saldo;
 					Cuenta cuenta;
 					int nCuentas = Datos[pos].DameNoCuentas();
-					
+
 					do{
 						ch = MenuCuentas();
 						system("cls");
@@ -446,7 +447,7 @@ int main(void){
 									cout << "No se han encontrado cuentas guardadas.\n\n";
 								}else{
 									for(int i = 0; i < nCuentas; i++){
-										cuenta = Datos[supos].DameCuenta(i); 
+										cuenta = Datos[supos].DameCuenta(i);
 										cout << "Numero: " << cuenta.DameNoCuenta() << "\n";
 										cout << "Saldo: " << cuenta.DameSaldo() << "\n";
 										cout << "Estado: " << (cuenta.EstaBloqueada()?"Bloqueada":"No bloqueada") << "\n\n";
@@ -456,7 +457,7 @@ int main(void){
 							case 3:
 								cout << "Introduzca el numero de cuenta que desea eliminar: ";
 								cin >> numero;
-								
+
 								pos = Datos[supos].BuscarCuenta(numero);
 								if(pos == -1){
 									cout << "Error, no existe ningunacuenta guardada con el numero introducido.\n\n";
@@ -471,7 +472,7 @@ int main(void){
 							case 4:
 								cout << "Introduzca el numero de cuenta que desea modificar: ";
 								cin >> numero;
-								
+
 								pos = Datos[supos].BuscarCuenta(numero);
 								if(pos == -1){
 									cout << "Error, no existe ningunacuenta guardada con el numero introducido.\n\n";
@@ -490,7 +491,7 @@ int main(void){
 							case 5:
 								cout << "Introduzca el numero de cuenta que desea modificar: ";
 								cin >> numero;
-								
+
 								pos = Datos[supos].BuscarCuenta(numero);
 								if(pos == -1){
 									cout << "Error, no existe ningunacuenta guardada con el numero introducido.\n\n";
@@ -536,7 +537,7 @@ int main(void){
 			system("cls");
 		}
 	}while(continuar);
-	
-	
+
+
 	return 0;
 }

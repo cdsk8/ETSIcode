@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #define M 10
 
@@ -41,11 +42,11 @@ int uno::minimo(){
 
 int main(void){
 	uno u;
-	
+
 	u.cargar();
 	u.maximo();
 	u.minimo();
-	
+
 	cout << "\n";
 	system("pause");
 	return 0;

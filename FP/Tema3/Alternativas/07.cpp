@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 using namespace std;
@@ -30,10 +31,10 @@ float Billete::operacion(){
 
 int main(){
 	Billete b;
-	
+
 	b.informacion();
 	cout << "\nEl precio del billete de ida y vuelta es " << b.operacion() << " euros.\n\n" ;
-	
+
 	system("pause");
 	return 0;
 }

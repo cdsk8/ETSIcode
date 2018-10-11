@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 using namespace std;
@@ -22,7 +23,7 @@ void Calculadora::operacion(){
 	char operacion;
 	cout << "\nIntroduzca la operacion que desea realizar: ";
 	cin >> operacion;
-	
+
 	if(operacion == '+' or operacion == 'S' or operacion == 's'){
 		cout << "\n" << a << " + " << b << " = " << (a+b) << "\n\n";
 	}else if(operacion == '-' or operacion == 'R' or operacion == 'r'){
@@ -34,10 +35,10 @@ void Calculadora::operacion(){
 
 int main(){
 	Calculadora c;
-	
+
 	c.informacion();
 	c.operacion();
-	
+
 	system("pause");
 	return 0;
 }

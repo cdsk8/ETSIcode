@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #define MAX_CUENTAS 100
 
@@ -59,13 +60,13 @@ bool Cuenta::EstaBloqueada(){
 int BuscarCuenta(Cuenta Ctas[MAX_CUENTAS], int NCuentas, int NoCuenta){
 	int i, pos;
 	i = pos = -1;
-	
+
 	while(i < NCuentas and pos == -1){
 		i++;
 		if(Ctas[i].DameNoCuenta() == NoCuenta)
 			pos = i;
 	}
-	
+
 	return pos;
 }
 
@@ -91,7 +92,7 @@ int main(void){
 	char ch;
 	float saldo;
 	int nCuentas = 0;
-	
+
 	do{
 		ch = MenuCuentas();
 		system("cls");
@@ -127,7 +128,7 @@ int main(void){
 			case 3:
 				cout << "Introduzca el numero de cuenta que desea eliminar: ";
 				cin >> numero;
-				
+
 				pos = BuscarCuenta(DatosCuentas, nCuentas,numero);
 				if(pos == -1){
 					cout << "Error, no existe ningunacuenta guardada con el numero introducido.\n\n";
@@ -142,7 +143,7 @@ int main(void){
 			case 4:
 				cout << "Introduzca el numero de cuenta que desea modificar: ";
 				cin >> numero;
-				
+
 				pos = BuscarCuenta(DatosCuentas, nCuentas,numero);
 				if(pos == -1){
 					cout << "Error, no existe ningunacuenta guardada con el numero introducido.\n\n";
@@ -159,7 +160,7 @@ int main(void){
 			case 5:
 				cout << "Introduzca el numero de cuenta que desea modificar: ";
 				cin >> numero;
-				
+
 				pos = BuscarCuenta(DatosCuentas, nCuentas,numero);
 				if(pos == -1){
 					cout << "Error, no existe ningunacuenta guardada con el numero introducido.\n\n";
@@ -188,7 +189,7 @@ int main(void){
 			system("cls");
 		}
 	}while(continuar);
-	
-	
+
+
 	return 0;
 }

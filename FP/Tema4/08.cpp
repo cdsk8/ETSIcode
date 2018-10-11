@@ -1,10 +1,11 @@
 #include <iostream>
+#include <cstdlib>
 #include <conio.h>
 #include <cctype>
 
 typedef char cadena[30];
 
-using namespace std; 
+using namespace std;
 
 class PalabraOculta{
 	private:
@@ -20,9 +21,9 @@ void PalabraOculta::Iniciar(){
 	char ch;
 	int i = 0;
 	Puntos = 9;
-	
+
 	cout << "Introduzca la palabra secreta: ";
-	
+
 	do{
 		ch = getch();
 		switch(ch){
@@ -50,22 +51,22 @@ void PalabraOculta::Jugar(){
 	int estado = 0; //	0 = nada | 1 = ha fallado | 2 =  ha acertado | 3 = ha repetido letra
 	int adivinado, cantidad, longitud;
 	adivinado = cantidad = longitud = 0;
-	
-	
+
+
 	do{
 		ch = palabraSecreta[longitud];
 		longitud++;
 	}while(ch != '\0');
 	longitud--;
-	
+
 	char palabra[longitud];
 	for(int i = 0; i < longitud; i++){
 		palabra[i] = '-';
 	}
-	
+
 	do{
 		system("cls");
-		
+
 		cout << "\t\t" << "--> ";
 		for(int i = 0; i < longitud; i++){
 			cout << palabra[i];
@@ -84,10 +85,10 @@ void PalabraOculta::Jugar(){
 				cout << " <--\t\tPuntos: " << Puntos << "\n\nLa letra introducida ya fue adivinada.\nAdivine una letra de la palabra: ";
 				break;
 		}
-		
-		
+
+
 		ch = toupper(getch());
-		
+
 		acertado = false;
 		estado = cantidad = 0;
 		for(int i = 0; i < longitud; i++){
@@ -114,7 +115,7 @@ void PalabraOculta::Jugar(){
 
 void PalabraOculta::MostrarSecreta(){
 	system("cls");
-	
+
 	if(Puntos > 0){
 		cout << "\t\t" << "--> " << palabraSecreta << " <--\n\nEnhorabuena, has adivinado la palabra secreta.\n Has ganado " << Puntos << " punto" << (Puntos==1?"":"s") << ".\n\n";
 	}else{
@@ -124,11 +125,11 @@ void PalabraOculta::MostrarSecreta(){
 
 int main(void){
 	PalabraOculta po;
-	
+
 	po.Iniciar();
 	po.Jugar();
 	po.MostrarSecreta();
-	
+
 	system("pause");
 	return 0;
 }

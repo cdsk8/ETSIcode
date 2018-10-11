@@ -1,10 +1,11 @@
 #include <iostream>
+#include <cstdlib>
 #include <time.h>
 #include <stdlib.h>
 #include <sstream>
 #include <string>
 
-using namespace std; 
+using namespace std;
 
 struct casilla{
 	char bloque;
@@ -24,22 +25,22 @@ class Tesoro{
 void Tesoro::Iniciar(){
 	Puntos = 15;
 	int pos1, pos2;
-	
+
 	srand(time(NULL));
-	
+
 	for(int i = 0; i < 5; i++){
 		for(int j = 0; j < 5; j++){
 			tablero[i][j].bloque = 'A';
 		}
 	}
-	
+
 	tablero[rand()%5][rand()%5].bloque = 'T';
-	
+
 	for(int i = 1; i <= 3; i++){
 		for(int j = 0; j < i; j++){
 			do{
 				pos1 = rand()%5;
-				pos2 = rand()%5;	
+				pos2 = rand()%5;
 			}while(tablero[pos1][pos2].bloque != 'A');
 			tablero[pos1][pos2].bloque = 'B';
 			tablero[pos1][pos2].profundidad = i;
@@ -54,17 +55,17 @@ bool Tesoro::Jugar(){
 	int entrada, fila, columna;
 	int intentos = 15;
 	casilla vision[5][5];
-	
-	
+
+
 	for(int i = 0; i < 5; i++){
 		for(int j = 0; j < 5; j++){
 			vision[i][j].bloque = '-';
 		}
 	}
-	
+
 	do{
 		system("cls");
-		
+
 		for(int i = 0; i < 5; i++){
 			for(int j = 0; j < 5; j++){
 				cout << vision[i][j].bloque;
@@ -74,9 +75,9 @@ bool Tesoro::Jugar(){
 			}
 			cout << "\n";
 		}
-		
+
 		cout << "\nPuntos acumulados:\t" << Puntos << "\nIntentos restantes:\t" << intentos << "\n" << mensaje.str() << "\n\n";
-		
+
 		do{
 			cout << "Indique fila [1,5]: ";
 			cin >> entrada;
@@ -88,9 +89,9 @@ bool Tesoro::Jugar(){
 				fila = entrada-1;
 			}
 		}while(error);
-		
+
 		cout << "\n";
-		
+
 		do{
 			cout << "Indique columna [1,5]: ";
 			cin >> entrada;
@@ -102,7 +103,7 @@ bool Tesoro::Jugar(){
 				columna = entrada-1;
 			}
 		}while(error);
-		
+
 		mensaje.str("");
 		if(vision[fila][columna].bloque == '-'){
 			intentos--;
@@ -124,11 +125,11 @@ bool Tesoro::Jugar(){
 		}else{
 			mensaje << "Ya probaste en ese espacio, no pasa nada.";
 		}
-		
-		
+
+
 		vision[fila][columna] = tablero[fila][columna];
 	}while(intentos > 0 and !encontrado);
-	
+
 	return encontrado;
 }
 
@@ -146,7 +147,7 @@ void Tesoro::MostrarTablero(){
 
 int main(void){
 	Tesoro t;
-	
+
 	t.Iniciar();
 	if(t.Jugar()){
 		system("cls");
@@ -157,8 +158,8 @@ int main(void){
 		t.MostrarTablero();
 		cout << "\n";
 	}
-	
-	
+
+
 	system("pause");
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -18,14 +19,14 @@ void Primo::cargar(){
 
 bool Primo::esPrimo(){
 	bool primo = true;
-	
+
 	int i = 2;
 	do{
 		if(i != n and n%i == 0)
 			primo = false;
 		i++;
 	}while(i <= n/2 and primo);
-	
+
 	return primo;
 }
 
@@ -41,10 +42,10 @@ void Primo::ListaPrimos(){
 
 int main(){
 	Primo p;
-	
+
 	p.ListaPrimos();
 	cout << "\n\n";
-	
+
 	system("pause");
 	return 0;
 }

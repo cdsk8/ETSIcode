@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #define M 10
 
@@ -23,25 +24,25 @@ void matrices::cargar(){
 bool matrices::encontrar(){
 	int buscado, i = 0;
 	bool encontrado = false;
-	
+
 	cout << "Introduzca el numero que desea buscar: ";
 	cin >> buscado;
-	
+
 	while(!encontrado and i < M){
 		if(tabla[i] == buscado)
 			encontrado = true;
 		i++;
 	}
-	
+
 	return encontrado;
 }
 
 int main(void){
 	matrices m;
-	
+
 	m.cargar();
 	cout << "\nEl numero que buscaba " << (m.encontrar()?"si":"no") << " se encuentra en la tabla.\n\n";
-	
+
 	system("pause");
 	return 0;
 }

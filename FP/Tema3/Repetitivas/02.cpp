@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -16,10 +17,10 @@ class Numeros{
 void Numeros::estadistica(){
 	int cantidad, tmp;
 	media = 0;
-	
+
 	cout << "Introduzca la cantidad de numeros que quieres poner: ";
 	cin >> cantidad;
-	
+
 	for(int i = 0; i < cantidad; i++){
 		cout << "Introduzca un numero entero: ";
 		cin >> tmp;
@@ -33,7 +34,7 @@ void Numeros::estadistica(){
 		}
 		media += tmp;
 	}
-	
+
 	media /= cantidad;
 	cout << "\n";
 }
@@ -52,10 +53,10 @@ float Numeros::mostrarmedia(){
 
 int main(){
 	Numeros n;
-	
+
 	n.estadistica();
 	cout << "La maxima es " << n.mostrarmax() << "\nLa minima es " << n.mostrarmin() << "\nLa media es " << n.mostrarmedia() << "\n\n";
-	
+
 	system("pause");
 	return 0;
 }

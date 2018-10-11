@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -12,10 +13,10 @@ class Adivinar{
 
 void Adivinar::Inicio(){
 	int semilla, tmp, divisores;
-	
+
 	cout << "Introduzca la semilla para este juego: ";
 	cin >> semilla;
-	
+
 	tmp = (semilla%90)*123;
 	divisores = 0;
 	for(int i = 1; i < tmp/2; i++){
@@ -27,18 +28,18 @@ void Adivinar::Inicio(){
 	}else{
 		Nsecreto = tmp%5397;
 	}
-	
+
 	cout << "Introduzca el numero de puntos con los que inicia la partida: ";
 	cin >> Puntos;
 }
 
 void Adivinar::Jugar(){
 	int numero;
-	
+
 	do{
 		cout << "\nAdivine el numero secreto: ";
 		cin >> numero;
-		
+
 		if(numero == Nsecreto){
 			Puntos = -5;
 		}else{
@@ -53,7 +54,7 @@ void Adivinar::Jugar(){
 			}
 		}
 	}while(Puntos > 0);
-	
+
 	if(Puntos == -5){
 		cout << "\nEnhorabuena, has adivinado el numero secreto.\n";
 	}else{
@@ -64,13 +65,13 @@ void Adivinar::Jugar(){
 int main(){
 	Adivinar a;
 	string continuar;
-	
+
 	do{
 		system("cls");
-		
+
 		a.Inicio();
 		a.Jugar();
-		
+
 		cout << "\n\n¿Desea jugar otra vez? (si, no): ";
 		cin >> continuar;
 	}while(continuar == "si");

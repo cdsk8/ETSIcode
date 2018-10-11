@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #define M 2
 #define N 4
@@ -35,10 +36,10 @@ void matrices::encontrar(){
 	int buscado;
 	int j, i = 0;
 	bool encontrado = 0;
-	
+
 	cout << "Introduzca el DNI por el que quiere buscar: ";
 	cin >> buscado;
-	
+
 	while(!encontrado and i < M){
 		j = 0;
 		while(!encontrado and j < N){
@@ -48,21 +49,21 @@ void matrices::encontrar(){
 		}
 		i++;
 	}
-	
+
 	if(encontrado){
 		cout << "\nEl DNI introducido ha sido encontrado. Su nombre asociado es " << tabla[i-1][j-1].nombre << ".\n\n";
 	}else{
 		cout << "\nEl DNI introducido no esta en la tabla.\n\n";
 	}
-	
+
 }
 
 int main(void){
 	matrices m;
-	
+
 	m.cargar();
 	m.encontrar();
-	
+
 	system("pause");
 	return 0;
 }

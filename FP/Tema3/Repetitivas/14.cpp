@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <windows.h>
 
 using namespace std;
@@ -18,7 +19,7 @@ void Reloj::Iniciar(){
 	cin >> Mi;
 	Si = 0;
 	TiempoSimulacion = 0;
-	
+
 	do{
 		if(TiempoSimulacion < 0)
 			cout << "El tiempo de simulacion no puede ser negativo.\n";
@@ -32,7 +33,7 @@ void Reloj::Iniciar(){
 void Reloj::Simular(){
 	for(int i = 0; i < TiempoSimulacion; i++){
 		cout << "\t" << (Hi<10?"0":"") << Hi << ":" << (Mi<10?"0":"") << Mi << ":" << (Si<10?"0":"") << Si << "\r";
-		
+
 		Si++;
 		if(Si == 60){
 			Si = 0;
@@ -45,14 +46,14 @@ void Reloj::Simular(){
 				}
 			}
 		}
-		
+
 		Sleep(500);
 	}
 }
 
 int main(){
 	Reloj r;
-	
+
 	r.Iniciar();
 	r.Simular();
 

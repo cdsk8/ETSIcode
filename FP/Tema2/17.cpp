@@ -1,20 +1,21 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
 int main(){
 	int longitud_en_en_metros = 15000;
 	double Precio_total_en_euros;
-	
-	
+
+
 	Precio_total_en_euros = 5000 * (longitud_en_en_metros / 5280.0);
-	
+
 	cout << "\nResultado de la primera operacion: " << Precio_total_en_euros;
-	
+
 	Precio_total_en_euros = 5000 * (longitud_en_en_metros / 5280);
-	
+
 	cout << "\nResultado de la segunda operacion: " << Precio_total_en_euros << "\n\n";
-	
+
 	system("pause");
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ void Estadistica::elaborarEstadistica(){
 	int cantidad;
 	double nota;
 	susp = apr = notab = sob = 0;
-	
+
 	cout << "Introduzca el numero de alumnos: ";
 	cin >> cantidad;
 	for(int i = 0; i < cantidad; i++){
@@ -38,10 +39,10 @@ void Estadistica::resultado(){
 
 int main(){
 	Estadistica e;
-	
+
 	e.elaborarEstadistica();
 	e.resultado();
-	
+
 	system("pause");
 	return 0;
 }

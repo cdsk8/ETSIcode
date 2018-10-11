@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 #define pi 3.1415
@@ -16,7 +17,7 @@ class CampoElec{
 
 void CampoElec::Leer(){
 	char opcion;
-	
+
 	cout << "Seleccione la unidad en la que quiere introducir la carga.\n  a) Miliculombios \n  b)Microculombios\n  c)Nanoculombios\n";
 	cout << "Ingrese su opcion (a, b, c): ";
 	cin >> opcion;
@@ -35,7 +36,7 @@ void CampoElec::Leer(){
 		default:
 			cout << "Error en la seleccion de unidades.\n";
 	}
-	
+
 	cout << "\nSeleccione la unidad en la que quiere introducir la carga.\n  a)Decimetros\n  b)Centimetros\n  c)Milimetros\n";
 	cout << "Ingrese su opcion (a, b, c): ";
 	cin >> opcion;
@@ -54,7 +55,7 @@ void CampoElec::Leer(){
 		default:
 			cout << "Error en la seleccion de unidades.\n";
 	}
-	
+
 	cout << "\n ";
 }
 
