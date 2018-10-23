@@ -444,7 +444,7 @@ int main(void){
 								break;
 							case 2:
 								if(nCuentas == 0){
-									cout << "No se han encontrado cuentas guardadas.\n\n";
+									cout << "No se han encontrado cuentas guardadas. \n\n";
 								}else{
 									for(int i = 0; i < nCuentas; i++){
 										cuenta = Datos[supos].DameCuenta(i);
