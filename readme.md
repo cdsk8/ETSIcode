@@ -1,4 +1,4 @@
 # TODO:
 Un buen readme.
-## Mejorando automatizador
+## Mejorando automatizador linea
 El automatizador va funcionando.
