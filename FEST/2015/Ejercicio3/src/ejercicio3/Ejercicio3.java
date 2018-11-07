@@ -21,15 +21,31 @@ public class Ejercicio3 {
     public static int[] seleccionar(int[][] contenedor, int[][][] ordenada){
         int[] seleccionadas = new int[3];
         
-        int max = -1;
-        int tmp = -1;
+        for (int j = 0; j < 3; j++) {
+            for (int i = 0; i < 3; i++) {
+                System.out.print(ordenada[j][i][1]+"  ");
+            }
+            System.out.println("");
+        }
+        
         boolean puedes;
         for(int j = 0; j < 3; j++){
-            for(int i = 0; i < 3; i++){
+            int i = 0;
+            boolean puesto = false;
+            while(i < 3 && !puesto){
                 puedes = true;
-                for(int k = 0; puedes && i < 3 && k != j; i++){
-                    if()
+                for(int k = 0; puedes && k < 3; k++){
+                    if(ordenada[i][j][0] == ordenada[i][k][0] && j != k && ordenada[i][k][1] > ordenada[i][j][1])
+                        puedes = false;
+                        //System.out.println("COMP "+ordenada[i][j][0]+" "+ordenada[i][k][0] + "  @  "+ordenada[i][j][1]+" "+ordenada[i][k][1]);
                 }
+                if(puedes){
+                    System.out.println("SEL "+i+" - "+ordenada[i][j][0]);
+                    seleccionadas[j] = ordenada[i][j][0];
+                    puesto = true;
+                    i = 0;
+                }
+                i++;
             }
         }
         
