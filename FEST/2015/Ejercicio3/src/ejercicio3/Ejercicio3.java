@@ -1,7 +1,11 @@
 package ejercicio3;
 
 public class Ejercicio3 {
-    
+    /*
+        No funciona.
+        Si eres capaz de hacerlo funcionar, puedes quedartelo.
+        Como si quieres venderlo a una empresa de seguridad.
+    */
     public static void main(String[] args) {
         int[][] contenedor1 = {{2,0,1},{0,3,1},{1,1,1}};
         int[][] contenedor2 = {{20,73,35},{29,78,31},{90,1,74}};
@@ -9,7 +13,7 @@ public class Ejercicio3 {
         
         int[][][] ordenada;
         int[] seleccionadas;
-        
+        /*
         ordenada = ordenar(contenedor1);
         seleccionadas = seleccionar(contenedor1, ordenada);
         System.out.println("La cantidad de movimientos minimos es: "+movimientos(contenedor1, seleccionadas));
@@ -17,9 +21,12 @@ public class Ejercicio3 {
         ordenada = ordenar(contenedor2);
         seleccionadas = seleccionar(contenedor2, ordenada);
         System.out.println("La cantidad de movimientos minimos es: "+movimientos(contenedor2, seleccionadas));
-        
+        */
         ordenada = ordenar(contenedor3);
         seleccionadas = seleccionar(contenedor3, ordenada);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("SEL "+i+": "+seleccionadas[i]);
+        }
         System.out.println("La cantidad de movimientos minimos es: "+movimientos(contenedor3, seleccionadas));
     }
     
@@ -28,6 +35,13 @@ public class Ejercicio3 {
         
         for (int i = 0; i < 3; i++) {
             seleccionadas[i] = -2;
+        }
+        
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(ordenada[i][j][0]+"-"+ordenada[i][j][1]+"  ");
+            }
+            System.out.println("");
         }
         
         boolean puedes;
