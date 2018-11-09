@@ -44,11 +44,10 @@ void cuatro::encontrar(){
 		i++;
 	}
 
-	if(encontrado){
+	if(encontrado)
 		cout << "\nLa palabra que buscaba se encuentra en tabla[" << (i-1) << "][" << (j-1) << "]\nEn indice 1, esta en la fila " << i << " y columna " << j << "\n\n";
-	}else{
+	else
 		cout << "\nLa palabra que buscaba se encuentra en la tabla.\n\n";
-	}
 
 }
 

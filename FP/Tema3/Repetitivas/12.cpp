@@ -73,11 +73,10 @@ int main(){
 	Fibonacci f;
 
 	int pos = f.ComprobarElemento();
-	if(pos == -1){
+	if(pos == -1)
 		cout << "\nEl numero introducido no pertenece a la sucesion.\n\n";
-	}else{
+	else
 		cout << "\nEl numero introducido aparece en la sucesion en la posicion " << pos << ".\n\n";
-	}
 
 	system("pause");
 	return 0;

@@ -41,9 +41,8 @@ void Reloj::Simular(){
 			if(Mi == 60){
 				Mi = 0;
 				Hi++;
-				if(Hi == 24){
+				if(Hi == 24)
 					Hi = 0;
-				}
 			}
 		}
 

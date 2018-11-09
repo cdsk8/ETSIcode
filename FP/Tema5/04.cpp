@@ -139,9 +139,9 @@ bool Cliente::BorrarCuenta(int pNoCuenta){
 		return false;
 	}else{
 		NoCuentas--;
-		for(int i = pos; i < NoCuentas; i++){
+		for(int i = pos; i < NoCuentas; i++)
 			Cuentas[i] = Cuentas[i+1];
-		}
+
 		return true;
 	}
 }

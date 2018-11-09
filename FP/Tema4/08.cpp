@@ -68,9 +68,9 @@ void PalabraOculta::Jugar(){
 		system("cls");
 
 		cout << "\t\t" << "--> ";
-		for(int i = 0; i < longitud; i++){
+		for(int i = 0; i < longitud; i++)
 			cout << palabra[i];
-		}
+
 		switch(estado){
 			case 0:
 				cout << " <--\t\tPuntos: " << Puntos << "\n\n\nAdivine una letra de la palabra: ";
@@ -116,11 +116,10 @@ void PalabraOculta::Jugar(){
 void PalabraOculta::MostrarSecreta(){
 	system("cls");
 
-	if(Puntos > 0){
+	if(Puntos > 0)
 		cout << "\t\t" << "--> " << palabraSecreta << " <--\n\nEnhorabuena, has adivinado la palabra secreta.\n Has ganado " << Puntos << " punto" << (Puntos==1?"":"s") << ".\n\n";
-	}else{
+	else
 		cout << "\t\t" << "--> " << palabraSecreta << " <--\n\nLo siento, esa era la palabra secreta.\n\n";
-	}
 }
 
 int main(void){

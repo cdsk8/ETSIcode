@@ -24,13 +24,12 @@ void Calculadora::operacion(){
 	cout << "\nIntroduzca la operacion que desea realizar: ";
 	cin >> operacion;
 
-	if(operacion == '+' or operacion == 'S' or operacion == 's'){
+	if(operacion == '+' or operacion == 'S' or operacion == 's')
 		cout << "\n" << a << " + " << b << " = " << (a+b) << "\n\n";
-	}else if(operacion == '-' or operacion == 'R' or operacion == 'r'){
+	else if(operacion == '-' or operacion == 'R' or operacion == 'r')
 		cout << "\n" << a << " - " << b << " = " << (a-b) << "\n\n";
-	}else{
+	else
 		cout << "\nLa opracion socilitada no es valida.\n\n";
-	}
 }
 
 int main(){

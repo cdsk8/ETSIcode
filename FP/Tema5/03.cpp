@@ -107,12 +107,10 @@ int main(void){
 						DatosCuentas[nCuentas] = Cuenta(numero, saldo);
 						nCuentas++;
 						cout << "\nCuenta creada correctamente.\n\n";
-					}else{
+					}else
 						cout << "\nError, ya existe una cuenta guardada con ese numero.\n\n";
-					}
-				}else{
+				}else
 					cout << "\nError, se ha superado el maximo de cuentas guardadas permitidas.\n\n";
-				}
 				break;
 			case 2:
 				if(nCuentas == 0){

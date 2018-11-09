@@ -15,11 +15,9 @@ class tres{
 };
 
 void tres::cargar(){
-	for(int i = 0; i < M; i++){
-		for(int j = 0; j < N; j++){
+	for(int i = 0; i < M; i++)
+		for(int j = 0; j < N; j++)
 			tabla[i][j] = i*j;
-		}
-	}
 }
 
 int tres::encontrar(){

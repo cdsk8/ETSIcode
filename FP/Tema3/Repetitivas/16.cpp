@@ -25,9 +25,8 @@ void Juego::PedirExtremos(){
 		if(ValorMin >= ValorMax){
 			cout << "Error, el extremo inferior no puede ser mayor que el superior.\n\n";
 			error = true;
-		}else{
+		}else
 			error = false;
-		}
 	}while(error);
 }
 
