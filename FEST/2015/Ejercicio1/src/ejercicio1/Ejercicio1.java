@@ -1,44 +1,49 @@
 package ejercicio1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Ejercicio1 {
 
     public static void main(String[] args) {
-        System.out.println(comp(10000000));
+        System.out.println("Solucion: "+comp(10000000));
     }
     
     public static int comp(int max){
         int res = 0;
-        ArrayList<Integer> buenos = new ArrayList<Integer>();
-        ArrayList<Integer> malos = new ArrayList<Integer>();
-        ArrayList<Integer> tmp = new ArrayList<Integer>();
-        buenos.add(89);
-        malos.add(1);
+        ArrayList<int[]> buenos = new ArrayList<>();
+        ArrayList<int[]> malos = new ArrayList<>();
+        //ArrayList<int[]> tmp = new ArrayList<>();
+        buenos.add(convertir(89));
+        malos.add(convertir(1));
         
-        int n,newN;
+        int newN, nn;
+        int[] n;
         for(int i = 1; i <= max; i++){
-            n = i;
-            tmp.clear();
+            //if(i % 100000 == 0)
+            //    System.out.println(i);
+            n = convertir(i);
+            nn = i;
+            //tmp.clear();
             while (true){
-                if(buenos.contains(n)){
-                    //tmp.remove(tmp.size());
-                    //buenos.addAll(tmp);
-                    buenos.add(i);
+                if(dentro(buenos,n)){
+                    //buenos = agregarTodos(buenos, tmp);
+                    if(!dentro(buenos,convertir(i)))
+                        buenos.add(convertir(i));
                     res++;
-                    if(res % 100000 == 0)
-                        System.out.println(res);
                     break;
-                }else if(malos.contains(n)){
-                    //malos.addAll(tmp);
-                    malos.add(i);
+                }else if(dentro(malos,n)){
+                    //malos = agregarTodos(malos, tmp);
+                    if(!dentro(malos,convertir(i)))
+                        malos.add(convertir(i));
                     break;
                 }else{
                     newN = 0;
-                    tmp.add(i);
-                    for(int j = 0; j < String.valueOf(n).length();j++)
-                        newN += Integer.parseInt(String.valueOf(n).charAt(j)+"") * Integer.parseInt(String.valueOf(n).charAt(j)+"");
-                    n = newN;
+                    //tmp.add(n);
+                    for(int j = 0; j < n.length;j++)
+                        newN += n[j]*n[j];
+                    n = convertir(newN);
                 }
             }
         }
@@ -46,4 +51,46 @@ public class Ejercicio1 {
         return res;
     }
     
+    public static int[] convertir(int n){
+        String Sn = Integer.toString(n);
+        List<Integer> numerosTMP = new ArrayList<>();
+        for (int i = 0; i < Sn.length(); i++) {
+            if(Sn.charAt(i) != '0'){
+                numerosTMP.add(Integer.valueOf(Sn.charAt(i)+""));
+            }
+                
+        }
+        int[] numeros = new int[numerosTMP.size()];
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = numerosTMP.get(i);
+        }
+        Arrays.sort(numeros);
+        return numeros;
+    }
+    
+    public static boolean comparar(int[] a, int[] b){
+        if(a.length != b.length)
+            return false;
+        for (int i = 0; i < a.length; i++) {
+            if(a[i] != b[i])
+                return false;
+        }
+        return true;
+    }
+    
+    public static boolean dentro(ArrayList<int[]> lista,int[] n){
+        for (int j = 0; j < lista.size(); j++) {
+            if(comparar(lista.get(j), n))
+                return true;
+        }
+        return false;
+    }
+
+    private static ArrayList<int[]> agregarTodos(ArrayList<int[]> lista, ArrayList<int[]> tmp) {
+        for (int i = 0; i < tmp.size(); i++) {
+            if(!dentro(lista,tmp.get(i)))
+                lista.add(tmp.get(i));
+        }
+        return lista;
+    }
 }
