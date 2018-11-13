@@ -34,9 +34,8 @@ void Primo::ListaPrimos(){
 	cout << "Lista de primos entre 2 y 1000:\n";
 	for(int i = 2; i < 1000; i++){
 		n = i;
-		if(esPrimo()){
+		if(esPrimo())
 			cout << i << ", ";
-		}
 	}
 }
 

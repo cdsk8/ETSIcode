@@ -42,11 +42,10 @@ void Juego::jugada(){
 			if(n_intento == 10){
 				cout << "No te quedan intentos, has perdido. El numero era " << numero << " \n\n";
 			}else{
-				if(intento >= numero){
+				if(intento >= numero)
 					cout << "El numero introducido es mayor que el numero generado. Te queda" << (n_intento<9?"n":"") <<" " << (10-n_intento) << " inteto" << (n_intento<9?"s":"") <<".\n\n";
-				}else{
+				else
 					cout << "El numero introducido es menor que el numero generado. Te queda" << (n_intento<9?"n":"") <<" " << (10-n_intento) << " inteto" << (n_intento<9?"s":"") <<".\n\n";
-				}
 			}
 		}
 	}

@@ -23,11 +23,9 @@ TicTacToe::TicTacToe(){
 }
 
 void TicTacToe::LimpiarTablero(){
-	for(int i = 0; i < 3; i++){
-		for(int j = 0; j < 3; j++){
+	for(int i = 0; i < 3; i++)
+		for(int j = 0; j < 3; j++)
 			Tablero[i][j] = ' ';
-		}
-	}
 }
 
 void TicTacToe::Pintar(){
@@ -60,15 +58,14 @@ bool TicTacToe::ComprobarColumna(char ficha, int columna){
 	return Tablero[0][columna] == ficha and Tablero[1][columna] == ficha and Tablero[2][columna] == ficha;
 }
 bool TicTacToe::ComprobarDiagonal(char ficha, int fila, int columna){
-	if(fila == 1 and columna == 1){
+	if(fila == 1 and columna == 1)
 		return (Tablero[0][0] == ficha and Tablero[1][1] == ficha and Tablero[2][2] == ficha) or (Tablero[2][0] == ficha and Tablero[1][1] == ficha and Tablero[0][2] == ficha);
-	}else if((fila == 0 and columna == 0) or (fila == 2 and columna == 2)){
+	else if((fila == 0 and columna == 0) or (fila == 2 and columna == 2))
 		return Tablero[0][0] == ficha and Tablero[1][1] == ficha and Tablero[2][2] == ficha;
-	}else if((fila == 2 and columna == 0) or (fila == 0 and columna == 2)){
+	else if((fila == 2 and columna == 0) or (fila == 0 and columna == 2))
 		return Tablero[2][0] == ficha and Tablero[1][1] == ficha and Tablero[0][2] == ficha;
-	}else{
+	else
 		return false;
-	}
 
 }
 bool TicTacToe::TableroCompleto(){
@@ -185,6 +182,7 @@ int main(void){
 		}
 		if(respuesta == "si"){
 			t.LimpiarTablero();
+			turno = 'X';
 		}else{
 			continuar = false;
 		}

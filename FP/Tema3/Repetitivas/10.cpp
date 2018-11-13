@@ -21,11 +21,10 @@ void Numero::informacion(){
 
 int Numero::mcd(){
 	while(a != b){
-		if(a > b){
+		if(a > b)
 			a -= b;
-		}else{
+		else
 			b -=a;
-		}
 	}
 
 	return a;

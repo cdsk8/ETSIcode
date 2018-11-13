@@ -1,38 +1,60 @@
 #include <iostream>
 #include <cstdlib>
+#include <conio.h>
 
 using namespace std;
 
+class numeros{
+    int uno, dos;
+public:
+    void cargar();
+    int leeuno();
+    int leedos();
+};
+
+void numeros::cargar(){
+    cout << "Introduzca el primer numero: ";
+	cin >> uno;
+	cout << "Introduzca el segundo numero: ";
+	cin >> dos;
+}
+
+int numeros::leeuno(){
+    return uno;
+}
+
+int numeros::leedos(){
+    return dos;
+}
+
+char menu(){
+    cout << "\n\tMENU\n  A. Sumar\n  B. Restar\n  C. Multiplicar\n  D. Dividir\n  E. Salir\n\nElija opcion: ";
+	return getch();
+}
+
 int main(){
-	int a, b;
-	char opcion;
+	numeros n;
 	bool continuar = true;
 
-	cout << "Introduzca el primer numero: ";
-	cin >> a;
-	cout << "Introduzca el segundo numero: ";
-	cin >> b;
+	n.cargar();
 
 	do{
-		cout << "\n\tMENU\n  A. Sumar\n  B. Restar\n  C. Multiplicar\n  D. Dividir\n  E. Salir\nElija opcion: ";
-		cin >> opcion;
-
-		switch(opcion){
+		switch(menu()){
 			case 'a':
 			case 'A':
-				cout << "\n " << a << " + " << b << " = " << (a+b) <<"\n\n";
+				cout << "\n\n\n " << n.leeuno() << " + " << n.leedos() << " = " << (n.leeuno()+n.leedos()) <<"\n\n";
 				break;
 			case 'b':
 			case 'B':
-				cout << "\n " << a << " - " << b << " = " << (a-b) <<"\n\n";
+				cout << "\n\n\n " << n.leeuno() << " - " << n.leedos() << " = " << (n.leeuno()-n.leedos()) <<"\n\n";
 				break;
 			case 'c':
 			case 'C':
-				cout << "\n " << a << " * " << b << " = " << (a*b) <<"\n\n";
+				cout << "\n\n\n " << n.leeuno() << " * " << n.leedos() << " = " << (n.leeuno()*n.leedos()) <<"\n\n";
 				break;
 			case 'd':
 			case 'D':
-				cout << "\n " << a << " / " << b << " = " << ((double)a/b) <<"\n\n";
+				cout << "\n\n\n " << n.leeuno() << " / " << n.leedos() << " = " << ((double)n.leeuno()/n.leedos()) <<"\n\n";
 				break;
 			case 'e':
 			case 'E':

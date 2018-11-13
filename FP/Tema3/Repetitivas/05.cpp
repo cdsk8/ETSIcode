@@ -20,9 +20,8 @@ void TablaMultiplicar::PedirNoTabla(){
 
 void TablaMultiplicar::MostrarTabla(){
 	for(int i = 0; i <= 10; i++){
-		for(int j = TablaIni; j<= TablaFin; j++){
+		for(int j = TablaIni; j<= TablaFin; j++)
 			cout << j << " x " << i << " = " << (j*i) << "\t";
-		}
 		cout << "\n";
 	}
 	cout << "\n";

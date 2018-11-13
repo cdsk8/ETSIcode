@@ -50,11 +50,10 @@ void matrices::encontrar(){
 		i++;
 	}
 
-	if(encontrado){
+	if(encontrado)
 		cout << "\nEl DNI introducido ha sido encontrado. Su nombre asociado es " << tabla[i-1][j-1].nombre << ".\n\n";
-	}else{
+	else
 		cout << "\nEl DNI introducido no esta en la tabla.\n\n";
-	}
 
 }
 

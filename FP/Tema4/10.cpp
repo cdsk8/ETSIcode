@@ -28,11 +28,9 @@ void Tesoro::Iniciar(){
 
 	srand(time(NULL));
 
-	for(int i = 0; i < 5; i++){
-		for(int j = 0; j < 5; j++){
+	for(int i = 0; i < 5; i++)
+		for(int j = 0; j < 5; j++)
 			tablero[i][j].bloque = 'A';
-		}
-	}
 
 	tablero[rand()%5][rand()%5].bloque = 'T';
 
@@ -57,11 +55,9 @@ bool Tesoro::Jugar(){
 	casilla vision[5][5];
 
 
-	for(int i = 0; i < 5; i++){
-		for(int j = 0; j < 5; j++){
+	for(int i = 0; i < 5; i++)
+		for(int j = 0; j < 5; j++)
 			vision[i][j].bloque = '-';
-		}
-	}
 
 	do{
 		system("cls");

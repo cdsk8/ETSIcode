@@ -64,13 +64,11 @@ void Analisis::PedirDatos(){
 }
 
 void Analisis::AnalizarDatos(){
-	for(int i = 0; i < TAMA; i++){
+	for(int i = 0; i < TAMA; i++)
 		Valores[i] = 0;
-	}
 
-	for(int i = 0; i < Ndatos; i++){
+	for(int i = 0; i < Ndatos; i++)
 		Valores[Datos[i]]++;
-	}
 }
 
 bool Analisis::EstanTodos(){
@@ -120,31 +118,30 @@ int Analisis::ValorMasRepetido(){
 
 void Analisis::MostrarDatos(){
 	cout << "Datos: ";
-	for(int i = 0; i < Ndatos; i++){
+	for(int i = 0; i < Ndatos; i++)
 		cout << Datos[i] << ", ";
-	}
 }
 
 void Analisis::MostrarAnalisis(){
-	for(int i = 0; i < TAMA; i++){
+	for(int i = 0; i < TAMA; i++)
 		cout << "+--";
-	}
+
 	cout << "+\n";
-	for(int i = 0; i < TAMA; i++){
+	for(int i = 0; i < TAMA; i++)
 		cout << (i<9?"| ":"|") << (i+1);
-	}
+
 	cout << "|\n";
-	for(int i = 0; i < TAMA; i++){
+	for(int i = 0; i < TAMA; i++)
 		cout << "+--";
-	}
+
 	cout << "+\n";
-	for(int i = 0; i < TAMA; i++){
+	for(int i = 0; i < TAMA; i++)
 		cout << (Valores[i]<10?"| ":"|") << Valores[i];
-	}
+
 	cout << "|\n";
-	for(int i = 0; i < TAMA; i++){
+	for(int i = 0; i < TAMA; i++)
 		cout << "+--";
-	}
+
 	cout << "+\n\n";
 }
 
@@ -193,33 +190,30 @@ int main(void){
 				break;
 			case 3:
 				system("cls");
-				if(analizado){
+				if(analizado)
 					cout << (a.EstanTodos()?"Todos":"No todos") << " los valores posibles estan en los datos.\n\nPulse una telca para volver al menu.\n";
-				}else{
+				else
 					cout << "Debes analizar los datos antes de ejecutar esta funcion.\nPulse una telca para volver al menu.\n";
-				}
-				cin.ignore();
+                cin.ignore();
 				cin.ignore();
 				system("cls");
 				break;
 			case 4:
 				system("cls");
-				if(analizado){
+				if(analizado)
 					cout << "El valor que ha introducido se repite " << a.ValorRepetido() << " vez/veces.\n\nPulse una telca para volver al menu.\n";
-				}else{
+				else
 					cout << "Debes analizar los datos antes de ejecutar esta funcion.\nPulse una telca para volver al menu.\n";
-				}
 				cin.ignore();
 				cin.ignore();
 				system("cls");
 				break;
 			case 5:
 				system("cls");
-				if(analizado){
+				if(analizado)
 					cout << "El valor que mas se repite en los datos es el " << a.ValorMasRepetido() << ".\n\nPulse una telca para volver al menu.\n";
-				}else{
+				else
 					cout << "Debes analizar los datos antes de ejecutar esta funcion.\nPulse una telca para volver al menu.\n";
-				}
 				cin.ignore();
 				cin.ignore();
 				system("cls");
@@ -229,9 +223,8 @@ int main(void){
 				if(analizado){
 					a.MostrarDatos();
 					cout << "\nLos datos fueron mostrados correctamente.\nPulse una telca para volver al menu.\n";
-				}else{
+				}else
 					cout << "Debes analizar los datos antes de ejecutar esta funcion.\nPulse una telca para volver al menu.\n";
-				}
 				cin.ignore();
 				cin.ignore();
 				system("cls");
@@ -241,9 +234,8 @@ int main(void){
 				if(analizado){
 					a.MostrarAnalisis();
 					cout << "\nEl analisis fue mostrado correctamente.\nPulse una telca para volver al menu.\n";
-				}else{
+				}else
 					cout << "Debes analizar los datos antes de ejecutar esta funcion.\nPulse una telca para volver al menu.\n";
-				}
 				cin.ignore();
 				cin.ignore();
 				system("cls");

@@ -101,9 +101,8 @@ void merges::ver(){
 
 void merges::verfusion(){
 	cout << "\n       Tabla fusionada\n";
-	for(int i = 0; i < numuno + numdos; i++){
+	for(int i = 0; i < numuno + numdos; i++)
 		cout << "\t      " << fus[i] << "\n";
-	}
 	cout << "\n";
 }
 

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <cmath>
 
 using namespace std;
 
@@ -22,10 +21,11 @@ void Billete::informacion(){
 }
 
 float Billete::operacion(){
-	float precio = distancia * 2 * 0.5;
-	if((dias >= 7 and distancia >= 800) or edad >= 55){
+	float precio = distancia * 0.5;
+
+	if((dias >= 7 && distancia >= 800) || edad >= 55)
 		precio *= 0.75;
-	}
+
 	return precio;
 }
 

@@ -11,13 +11,12 @@ int main(void){
 	cout << "Introduzca el segundo numero: ";
 	cin >> b;
 
-	if(a > b){
+	if(a > b)
 		cout << "\n" << a << " es mayor que " << b << ".\n\n";
-	}else if(b > a){
+	else if(b > a)
 		cout << "\n" << b << " es mayor que " << a << ".\n\n";
-	}else{
+	else
 		cout << "\n" << a << " es igual a " << b << ".\n\n";
-	}
 
 	system("pause");
 	return 0;

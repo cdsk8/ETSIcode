@@ -19,8 +19,17 @@ void Estadistica::elaborarEstadistica(){
 	cout << "Introduzca el numero de alumnos: ";
 	cin >> cantidad;
 	for(int i = 0; i < cantidad; i++){
-		cout << "Introduzca la nota: ";
-		cin >> nota;
+		do{
+            cout << "Introduzca la nota: ";
+            cin >> nota;
+            if(nota < 0 || nota > 10){
+                cout << "Error al introducir la nota, pruebe otra vez. ";
+                system("color 4");
+            }
+		}while(nota < 0 || nota > 10);
+		cout << "\n";
+		system("color 7");
+
 		if(nota >= 9){
 			sob ++;
 		}else if(nota >= 7){

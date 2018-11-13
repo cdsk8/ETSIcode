@@ -23,11 +23,10 @@ void Adivinar::Inicio(){
 		if(tmp%i == 0)
 			divisores += i;
 	}
-	if(divisores > tmp){
+	if(divisores > tmp)
 		Nsecreto = tmp%12459;
-	}else{
+	else
 		Nsecreto = tmp%5397;
-	}
 
 	cout << "Introduzca el numero de puntos con los que inicia la partida: ";
 	cin >> Puntos;

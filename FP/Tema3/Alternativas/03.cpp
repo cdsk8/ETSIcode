@@ -23,9 +23,8 @@ int main(){
 		solucion2 = ((-b) - sqrt(pow(b,2) - (4*a*c))) / (2*a);
 
 		cout << "\nLas dos soluciones posibles son " << solucion1 << " y " << solucion2 << "\n\n";
-	}else{
+	}else
 		cout << "\nEl sistema no tiene tiene soluciones reales.\n\n";
-	}
 
 	system("pause");
 	return 0;
