@@ -16,34 +16,35 @@ class uno{
 
 void uno::cargar(){
 	for(int i = 0; i < M; i++){
-		cout << "Introduzca un numero entero: ";
+		cout << "Introduzca un numero entero (" << (i+1) << "): ";
 		cin >> tabla[i];
 	}
 	cout << "\n";
 }
 
 int uno::maximo(){
-	int max = -32767;
-	for(int i = 0; i < M; i++)
+	int max = tabla[0];
+	for(int i = 1; i < M; i++)
 		if(tabla[i] > max)
 			max = tabla[i];
-	cout << "El maximo valor almacenado en la tabla es " << max << "\n";
+    return max;
 }
 
 int uno::minimo(){
-	int min = 32767;
-	for(int i = 0; i < M; i++)
+	int min = tabla[0];
+	for(int i = 1; i < M; i++)
 		if(tabla[i] < min)
 			min = tabla[i];
-	cout << "El minimo valor almacenado en la tabla es " << min << "\n";
+    return min;
 }
 
 int main(void){
 	uno u;
 
 	u.cargar();
-	u.maximo();
-	u.minimo();
+    cout << "El maximo valor almacenado en la tabla es " << u.maximo() << "\n";
+    cout << "El minimo valor almacenado en la tabla es " << u.minimo() << "\n";
+
 
 	cout << "\n";
 	system("pause");
