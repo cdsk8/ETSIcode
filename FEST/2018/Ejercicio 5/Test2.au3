@@ -8,28 +8,23 @@ Global $k = 2
 Global $count = 0
 
 Local $nada[$n/2]
-rec($nada, 0, 0)
+rec($nada, 0, 0, -1)
 
 ConsoleWrite("Cantidad: "&$count&@CRLF)
 
-Func rec($corte, $add, $picos)
-   $pos = primerCero($corte)
-   If $add <> 0 And $pos <> -1 Then $corte[$pos] = $add
-   If $add <> 0 Then dibujar($corte)
-   If $pos = -1 Then
+Func rec($corte, $add, $picos, $pos)
+   If $add > 0 Then $corte[$pos] = $add
+   If $pos = ($n/2)-1 Then
 	  If $picos = $k Then
 		 $count += 1
-		 ;ConsoleWrite("Combinacion: "&@CRLF)
-		 ;dibujar($corte)
+		 ConsoleWrite("Combinacion: "&@CRLF)
+		 dibujar($corte)
 	  EndIf
    Else
-	  If $add = 0 Or $add = 1 Or $add = 3 Then rec($corte,1,$picos+1)
-	  If ($add = 0 Or $add = 1 Or $add = 3) And $pos <> ($n/2)-1 Then
-		 ConsoleWrite("Puesto una dos: "&&@)
-		 rec($corte,2,$picos)
-	  EndIf
-	  If $add = 2 Or $add = 4 Then rec($corte,3,$picos+1)
-	  If ($add = 2 Or $add = 4) And $pos <> ($n/2)-1 Then rec($corte,4,$picos+1)
+	  If $add = 0 Or $add = 1 Or $add = 3 Then rec($corte,1,$picos+1,$pos+1)
+	  If ($add = 0 Or $add = 1 Or $add = 3) And $pos <> ($n/2)-2 Then rec($corte,2,$picos,$pos+1)
+	  If $add = 2 Or $add = 4 Then rec($corte,3,$picos+1,$pos+1)
+	  If ($add = 2 Or $add = 4) And $pos <> ($n/2)-2 Then rec($corte,4,$picos+1,$pos+1)
    EndIf
 EndFunc
 
