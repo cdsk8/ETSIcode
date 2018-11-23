@@ -4,6 +4,7 @@
 
 #define M 2
 #define N 4
+
 typedef char cadena[30];
 
 using namespace std;
@@ -24,10 +25,10 @@ class matrices{
 void matrices::cargar(){
 	for(int i = 0; i < M; i++){
 		for(int j = 0; j < N; j++){
-			cout << "Introduzca un DNI, sin letra: ";
+			cout << "Introduzca un DNI, sin letra ("<< i+1 <<","<< j+1 <<"): ";
 			cin >> tabla[i][j].dni;
 			cin.ignore();
-			cout << "Introduzca el nombre correspondiente al dni anterior: ";
+			cout << "Introduzca el nombre correspondiente al DNI anterior ("<< i+1 <<","<< j+1 <<"): ";
 			gets(tabla[i][j].nombre);
 		}
 	}

@@ -15,10 +15,11 @@ class matrices{
 
 void matrices::cargar(){
 	for(int i = 0; i < M; i++){
-		cout << "Introduzca un numero entero: ";
-		cin >> tabla[i];
+		//cout << "Introduzca un numero entero (" << i+1 << "): ";
+		//cin >> tabla[i];
+		tabla[i] = i;   //Creo que este ejercicio ha cambiado.
 	}
-	cout << "\n";
+	//cout << "\n";
 }
 
 bool matrices::encontrar(){
@@ -28,7 +29,7 @@ bool matrices::encontrar(){
 	cout << "Introduzca el numero que desea buscar: ";
 	cin >> buscado;
 
-	while(!encontrado and i < M){
+	while(!encontrado && i < M){
 		if(tabla[i] == buscado)
 			encontrado = true;
 		i++;

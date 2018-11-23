@@ -4,6 +4,7 @@
 
 #define M 3
 #define N 4
+
 typedef char cadena[30];
 
 using namespace std;
@@ -19,7 +20,7 @@ class cuatro{
 void cuatro::cargar(){
 	for(int i = 0; i < M; i++){
 		for(int j = 0; j < N; j++){
-			cout << "Introduzca una palabra: ";
+			cout << "Introduzca una palabra ("<< i+1 <<","<< j+1 <<"): ";
 			cin >> tabla[i][j];
 		}
 	}
@@ -34,9 +35,9 @@ void cuatro::encontrar(){
 	cout << "Introduzca la palabra que desea buscar: ";
 	cin >> buscado;
 
-	while(!encontrado and i < M){
+	while(!encontrado && i < M){
 		j = 0;
-		while(!encontrado and j < N){
+		while(!encontrado && j < N){
 			if(strcmp(tabla[i][j], buscado) == 0)
 				encontrado = true;
 			j++;

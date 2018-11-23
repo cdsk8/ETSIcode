@@ -16,7 +16,7 @@ class merges{
 };
 
 void merges::cargar(){
-	bool error = false;
+	bool error;
 
 	do{
 		cout << "Introduzca el numero de elementos que desea colocar en la primera tabla: ";
@@ -75,8 +75,8 @@ void merges::mezclar(){
 	int i, j, k;
 	i = j = k = 0;
 
-	while(i < numuno or j < numdos){
-		if((i != numuno and uno[i] < dos[j]) or j == numdos){
+	while(i < numuno || j < numdos){
+		if((i != numuno && uno[i] < dos[j]) || j == numdos){
 			fus[k] = uno[i];
 			i++;
 		}else{

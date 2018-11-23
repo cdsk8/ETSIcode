@@ -13,11 +13,12 @@ class vector{
 
 void vector::cargar(){
 	for(int i = 0; i < 10; i++){
-		cout << "Introduzca un numero para la primera tabla: ";
+		cout << "Introduzca un numero para la primera tabla ("<< i+1 <<"): ";
 		cin >> tab1[i];
 	}
+	cout << "\n";
 	for(int i = 0; i < 10; i++){
-		cout << "Introduzca un numero para la segunda tabla: ";
+		cout << "Introduzca un numero para la segunda tabla ("<< i+1 <<"): ";
 		cin >> tab2[i];
 	}
 	cout << "\n";
@@ -25,15 +26,15 @@ void vector::cargar(){
 
 int vector::comparar(){
 	int i = 0;
-	int identicas = 0;
+	bool identicas = false;
 
-	while(!identicas and i < 10){
+	while(!identicas && i < 10){
 		if(tab1[i] != tab2[i])
-			identicas = 1;
+			identicas = true;
 		i++;
 	}
 
-	return identicas;
+	return identicas?1:0;
 }
 
 int main(void){

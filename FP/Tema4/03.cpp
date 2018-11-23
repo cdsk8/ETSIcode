@@ -27,9 +27,9 @@ int tres::encontrar(){
 	cout << "Introduzca el numero que desea buscar: ";
 	cin >> buscado;
 
-	while(!encontrado and i < M){
+	while(!encontrado && i < M){
 		j = 0;
-		while(!encontrado and j < N){
+		while(!encontrado && j < N){
 			if(tabla[i][j] == buscado)
 				encontrado = 1;
 			j++;

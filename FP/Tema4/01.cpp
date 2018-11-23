@@ -1,6 +1,15 @@
 #include <iostream>
 #include <cstdlib>
 
+
+//Caracteres especiales del español.
+#define Ea char(160)
+#define Ee char(130)
+#define Ei char(161)
+#define Eo char(162)
+#define Eu char(163)
+#define Ex char(168)
+
 #define M 10
 
 using namespace std;
@@ -42,8 +51,8 @@ int main(void){
 	uno u;
 
 	u.cargar();
-    cout << "El maximo valor almacenado en la tabla es " << u.maximo() << "\n";
-    cout << "El minimo valor almacenado en la tabla es " << u.minimo() << "\n";
+    cout << "El m"<<Ea<<"ximo valor almacenado en la tabla es " << u.maximo() << "\n";
+    cout << "El m"<<Ei<<"nimo valor almacenado en la tabla es " << u.minimo() << "\n";
 
 
 	cout << "\n";
