@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <conio.h>
+#include "cdrawer.h"
 
 typedef char cadena[30];
 
@@ -115,10 +116,13 @@ void PalabraOculta::Jugar(){
 void PalabraOculta::MostrarSecreta(){
 	system("cls");
 
-	if(Puntos > 0)
-		cout << "\t\t" << "--> " << palabraSecreta << " <--\n\nEnhorabuena, has adivinado la palabra secreta.\n\tHas ganado " << Puntos << " punto" << (Puntos==1?"":"s") << ".\n\n";
-	else
+	if(Puntos > 0){
+        cout << "\t\t" << "--> " << palabraSecreta << " <--\n\nEnhorabuena, has adivinado la palabra secreta.\n\tTu puntuacion es:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        dibujarN(Puntos,400,10);
+	}
+	else{
 		cout << "\t\t" << "--> " << palabraSecreta << " <--\n\nLo siento, esa era la palabra secreta.\n\n";
+	}
 }
 
 int main(void){

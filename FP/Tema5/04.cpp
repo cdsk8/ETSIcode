@@ -114,7 +114,7 @@ int Cliente::BuscarCuenta(int pNoCuenta){
 }
 
 bool Cliente::CrearCuenta(Cuenta pCu){
-	if(NoCuentas < MAX_CUENTAS and BuscarCuenta(pCu.DameNoCuenta()) == -1){
+	if(NoCuentas < MAX_CUENTAS && BuscarCuenta(pCu.DameNoCuenta()) == -1){
 		Cuentas[NoCuentas] = pCu;
 		NoCuentas++;
 		return true;
@@ -231,7 +231,7 @@ int Menu(){
 
 int main(void){
 	Cliente Datos[MAX_CLIENTES];
-	int nClientes;
+	int nClientes = 0;
 
 	char ch;
 	bool continuar = true;
