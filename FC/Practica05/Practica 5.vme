@@ -10,14 +10,7 @@ entrada : binary[3,0]
 entrada = C3&C2&C1&C0
 
 Set I Switch entrada
-'1' case "0001"
-'1' case "0010"
-'1' case "0100"
-'1' case "0111"
-'1' case "1000"
-'1' case "1011"
-'1' case "1101"
-'1' case "1110"
+'1' case "0001","0010","0100","0111","1000","1011","1101","1110"
 '0' case else
 
 entrada_int : integer[0,15]

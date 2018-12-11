@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Enginer:        
--- Create Date:    22:04:37 11/12/2018
+-- Create Date:    23:45:47 11/12/2018
 -- Module Name:    Practica5 - Arquitectura
 -- Project Name:   Practica 5.vme
 -- Description:    
@@ -30,13 +30,13 @@ Begin
 	entrada <= C3&C2&C1&C0;
 
 	I <= '1' When entrada = "0001" else
-		  '1' When entrada = "0010" else
-		  '1' When entrada = "0100" else
-		  '1' When entrada = "0111" else
-		  '1' When entrada = "1000" else
-		  '1' When entrada = "1011" else
-		  '1' When entrada = "1101" else
-		  '1' When entrada = "1110" else
+		  '1' When entrada = "0001" else
+		  '1' When entrada = "0001" else
+		  '1' When entrada = "0001" else
+		  '1' When entrada = "0001" else
+		  '1' When entrada = "0001" else
+		  '1' When entrada = "0001" else
+		  '1' When entrada = "0001" else
 		  '0';
 
 	entrada_int <= CONV_INTEGER(entrada);
