@@ -1,0 +1,28 @@
+Entity Practica5
+
+C0, C1, C2, C3 : in binary
+A, I, J : out binary
+
+A = ((Not C2) And (Not C3)) Or (C2 And C3) Or (C0 And C1 And (Not C2)) Or ((Not C0) And (Not C1) And C2)
+// A = (C2 = C3) Or (C0 And C1 And (Not C2)) Or ((Not C0) And (Not C1) And C2)
+
+entrada : binary[3,0]
+entrada = C3&C2&C1&C0
+
+Set I Switch entrada
+'1' case "0001"
+'1' case "0010"
+'1' case "0100"
+'1' case "0111"
+'1' case "1000"
+'1' case "1011"
+'1' case "1101"
+'1' case "1110"
+'0' case else
+
+entrada_int : integer[0,15]
+entrada_int = (int) entrada
+
+Set J Switch entrada_int
+'1' case 0,1,3,7,8,12,14,15
+'0' case else

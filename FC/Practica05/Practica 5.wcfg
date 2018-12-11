@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Arlin-T2/Desktop/test/test/Practica5Test_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="practica5test" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="4" />
+   <wvobject fp_name="group8" type="group">
+      <obj_property name="label">Entradas</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="vbus9" type="vbus" db_ref_id="1">
+         <obj_property name="label">Entrada</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/practica5test/c0" type="logic" db_ref_id="1">
+            <obj_property name="ElementShortName">c0</obj_property>
+            <obj_property name="ObjectShortName">c0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/practica5test/c1" type="logic" db_ref_id="1">
+            <obj_property name="ElementShortName">c1</obj_property>
+            <obj_property name="ObjectShortName">c1</obj_property>
+         </wvobject>
+         <wvobject fp_name="/practica5test/c2" type="logic" db_ref_id="1">
+            <obj_property name="ElementShortName">c2</obj_property>
+            <obj_property name="ObjectShortName">c2</obj_property>
+         </wvobject>
+         <wvobject fp_name="/practica5test/c3" type="logic" db_ref_id="1">
+            <obj_property name="ElementShortName">c3</obj_property>
+            <obj_property name="ObjectShortName">c3</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/practica5test/a" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">a</obj_property>
+      <obj_property name="ObjectShortName">a</obj_property>
+   </wvobject>
+   <wvobject fp_name="/practica5test/i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i</obj_property>
+      <obj_property name="ObjectShortName">i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/practica5test/j" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">j</obj_property>
+      <obj_property name="ObjectShortName">j</obj_property>
+   </wvobject>
+</wave_config>
