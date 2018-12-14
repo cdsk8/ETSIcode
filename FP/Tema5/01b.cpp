@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <conio.h>
+#include "cdrawer.h"
 
 #define MAX 5
 
@@ -140,7 +141,9 @@ void almacen::vender(int pos, int cant){
 
 	if(stock >= cant){
 		productos[pos].cambiarstock(stock-cant);
-		cout << "Total a pagar: " << (cant*precio) << "e.\n";
+		//cout << "Total a pagar: " << (cant*precio) << "e.\n";
+		cout << "Total a pagar:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+		dibujarN(cant*precio,50,100,6);
 	}else{
 		cout << "No se dispone de estock suficiente.\n";
 	}
@@ -170,6 +173,12 @@ int main(void){
 	float pordP_tmp;
 	int i, pos;
 	char ch;
+
+	tprod t;
+	cad nombre;
+    t.leenombre(nombre);
+    cout << nombre;
+
 
 	almacen a;
 
