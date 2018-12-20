@@ -21,10 +21,10 @@ Set J Switch entrada_int
 '0' case else
 
 
-Lever1 c0
-Lever2 c1
-Lever3 c2
-Lever4 c3
+Lever1 C0
+Lever2 C1
+Lever3 C2
+Lever4 C3
 Led8 A
 Led7 I
 Led6 J

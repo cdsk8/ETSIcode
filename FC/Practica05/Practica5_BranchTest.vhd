@@ -31,9 +31,13 @@ ARCHITECTURE behavior OF Practica5Test IS
    signal A : std_logic;
    signal I : std_logic;
    signal J : std_logic;
+	
+		Signal entrada :  STD_LOGIC_VECTOR(3 downto 0);
+	Signal entrada_int :  INTEGER range 0 to 15;
  
 BEGIN
- 
+	entrada <= C3&C2&C1&C0;
+	entrada_int <= CONV_INTEGER(entrada);
 	-- Instantiate the Unit Under Test (UUT)
    uut: Practica5 PORT MAP (
           C0 => C0,

@@ -1,9 +1,9 @@
 ----------------------------------------------------------------------------------
--- Enginer:        
--- Create Date:    20:25:33 15/12/2018
+-- Enginer:        Borja López Pineda
+-- Create Date:    17:10:03 16/12/2018
 -- Module Name:    Practica5 - Arquitectura
 -- Project Name:   Practica 5.vme
--- Description:    
+-- Description:    Practica 5 de FC, ETSI UHU.
 --
 -- Created with VHDL ME. Parser by B0vE, powered by Temis (De mesa)
 ----------------------------------------------------------------------------------
@@ -47,11 +47,11 @@ Begin
 End Arquitectura;
 
 --#Implementation, copy this into constrictions file and remove '--' coments.
---NET "L13" LOC = "c0"  | IOSTANDARD = LVTTL | PULLUP ;
---NET "L14" LOC = "c1"  | IOSTANDARD = LVTTL | PULLUP ;
---NET "H18" LOC = "c2"  | IOSTANDARD = LVTTL | PULLUP ;
---NET "N17" LOC = "c3"  | IOSTANDARD = LVTTL | PULLUP ;
---NET "F9" LOC = "A"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
---NET "E9" LOC = "I"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
---NET "D11" LOC = "J"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+--NET "C0" LOC = "L13"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "C1" LOC = "L14"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "C2" LOC = "H18"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "C3" LOC = "N17"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "A" LOC = "F9"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+--NET "I" LOC = "E9"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+--NET "J" LOC = "D11"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
 --#Implementation finished
