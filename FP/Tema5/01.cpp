@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <stdio.h>
 #include <string.h>
 #include <conio.h>
 
@@ -76,7 +77,7 @@ class almacen{
 };
 
 almacen::almacen(){
-	nprod = 0;
+	vaciar();
 }
 
 void almacen::vaciar(){
@@ -89,7 +90,7 @@ int almacen::existe(cad nom){
 	pos = -1;
 	i = 0;
 
-	while(i < MAX and pos == -1){
+	while(i < nprod and pos == -1){
 		productos[i].leenombre(original);
 		if(strcmp(original,nom) == 0)
 			pos = i;
@@ -104,17 +105,25 @@ void almacen::verprod(int pos, tprod &prod){
 }
 
 int almacen::insertar(tprod P){
+    /*--------------------  Códigos de resultado  ---------------------
+      ------ 0. Correcto ---- 1. Ya existe ---- 2. Almacen lleno ------
+      -----------------------------------------------------------------*/
+    int resultado;
+
 	if(nprod == MAX)
-		return 2;
+		resultado = 2;
+    else{
+        cad nombre;
+        P.leenombre(nombre);
+        if(existe(nombre) != -1)
+            resultado = 1;
+        else{
+            productos[nprod++] = P;
+            resultado = 0;
+        }
+    }
 
-	cad nombre;
-	P.leenombre(nombre);
-	if(existe(nombre) != -1)
-		return 1;
-
-	productos[nprod] = P;
-	nprod++;
-	return 0;
+	return resultado;
 }
 
 void almacen::vertabla(){
@@ -174,37 +183,19 @@ int main(void){
 	almacen a;
 
 	do{
+        system("cls");
 		switch(menu()){
 			case 'A':
 			case 'a':
-				system("cls");
+			    system("cls");
 				a.vertabla();
 				break;
 			case 'B':
 			case 'b':
-				system("cls");
-
+			    system("cls");
 				cout << "Introduzca el nombre: ";
-				i = 0;
-				do{
-					ch = getch();
-					switch(ch){
-						case '\b':
-							if(i > 0){
-								cout << "\b \b";
-								i--;
-							}
-							break;
-						case '\r':
-							cout << '\n';
-							prodN_tmp[i] = '\0';
-							break;
-						default:
-							cout << ch;
-							prodN_tmp[i] = ch;
-							i++;
-					}
-				}while(ch != '\r');
+				cin.ignore();
+				gets(prodN_tmp);
 				prod_tmp.cambiarnombre(prodN_tmp);
 
 				cout << "Introduzca el precio: ";
@@ -229,30 +220,10 @@ int main(void){
 				break;
 			case 'C':
 			case 'c':
-				system("cls");
-
+			    system("cls");
 				cout << "\nIntroduzca el nombre del producto a vender: ";
-				i = 0;
-				do{
-					ch = getch();
-					switch(ch){
-						case '\b':
-							if(i > 0){
-								cout << "\b \b";
-								i--;
-							}
-							break;
-						case '\r':
-							cout << '\n';
-							prodN_tmp[i] = '\0';
-							break;
-						default:
-							cout << ch;
-							prodN_tmp[i] = ch;
-							i++;
-					}
-				}while(ch != '\r');
-
+				cin.ignore();
+				gets(prodN_tmp);
 				pos = a.existe(prodN_tmp);
 				if(pos == -1){
 					cout << "\nNo existe ningun producto con ese nombre.\n";
@@ -265,12 +236,13 @@ int main(void){
 				break;
 			case 'D':
 			case 'd':
-				system("cls");
+			    system("cls");
 				a.vaciar();
 				cout << "Almacen vaciado correctamente.\n";
 				break;
 			case 'E':
 			case 'e':
+			    system("cls");
 				continuar = false;
 				break;
 		}

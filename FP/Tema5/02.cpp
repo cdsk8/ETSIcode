@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
@@ -31,17 +32,19 @@ void TicTacToe::LimpiarTablero(){
 
 void TicTacToe::Pintar(){
 	system("cls");
+	cout << char(201)<<char(205)<<char(203)<<char(205)<<char(203)<<char(205)<<char(187)<<"\n";
 	for(int i = 0; i < 3; i++){
+        cout << char(186);
 		for(int j = 0; j < 3; j++){
 			cout << Tablero[i][j];
 			if(j != 2)
-				cout << "|";
+				cout << char(186);
 		}
-		cout << "\n";
+		cout << char(186) << "\n";
 		if(i != 2)
-			cout << "-+-+-\n";
+			cout << char(204)<<char(205)<<char(206)<<char(205)<<char(206)<<char(205)<<char(185)<<"\n";
 	}
-	cout << "\n";
+	cout << char(200)<<char(205)<<char(202)<<char(205)<<char(202)<<char(205)<<char(188)<<"\n";
 }
 
 bool TicTacToe::PonerFicha(char ficha, int fila, int columna){
@@ -53,28 +56,29 @@ bool TicTacToe::PonerFicha(char ficha, int fila, int columna){
 }
 
 bool TicTacToe::ComprobarFila(char ficha, int fila){
-	return Tablero[fila][0] == ficha and Tablero[fila][1] == ficha and Tablero[fila][2] == ficha;
+	return Tablero[fila][0] == ficha && Tablero[fila][1] == ficha && Tablero[fila][2] == ficha;
 }
 bool TicTacToe::ComprobarColumna(char ficha, int columna){
-	return Tablero[0][columna] == ficha and Tablero[1][columna] == ficha and Tablero[2][columna] == ficha;
+	return Tablero[0][columna] == ficha && Tablero[1][columna] == ficha & Tablero[2][columna] == ficha;
 }
 bool TicTacToe::ComprobarDiagonal(char ficha, int fila, int columna){
-	if(fila == 1 and columna == 1)
-		return (Tablero[0][0] == ficha and Tablero[1][1] == ficha and Tablero[2][2] == ficha) or (Tablero[2][0] == ficha and Tablero[1][1] == ficha and Tablero[0][2] == ficha);
-	else if((fila == 0 and columna == 0) or (fila == 2 and columna == 2))
-		return Tablero[0][0] == ficha and Tablero[1][1] == ficha and Tablero[2][2] == ficha;
-	else if((fila == 2 and columna == 0) or (fila == 0 and columna == 2))
-		return Tablero[2][0] == ficha and Tablero[1][1] == ficha and Tablero[0][2] == ficha;
+    bool diagonal;
+	if(fila == 1 && columna == 1)
+		diagonal = (Tablero[0][0] == ficha && Tablero[1][1] == ficha && Tablero[2][2] == ficha) || (Tablero[2][0] == ficha && Tablero[1][1] == ficha && Tablero[0][2] == ficha);
+	else if((fila == 0 && columna == 0) || (fila == 2 && columna == 2))
+		diagonal = Tablero[0][0] == ficha && Tablero[1][1] == ficha && Tablero[2][2] == ficha;
+	else if((fila == 2 && columna == 0) || (fila == 0 && columna == 2))
+		diagonal = Tablero[2][0] == ficha && Tablero[1][1] == ficha && Tablero[0][2] == ficha;
 	else
-		return false;
-
+		diagonal = false;
+    return diagonal;
 }
 bool TicTacToe::TableroCompleto(){
 	bool completo = true;
 	int i, j;
 
 	i = j = 0;
-	while(j < 3 and completo){
+	while(j < 3 && completo){
 		if(Tablero[i][j] == ' ')
 			completo = false;
 
@@ -126,7 +130,7 @@ void pedirPosicion(char ficha, int &fila, int &columna){
 
 int main(void){
 	TicTacToe t;
-	string respuesta;
+	char respuesta[3];
 	bool error, continuar = true;
 	char turno = 'X';
 	int fila, columna;
@@ -150,11 +154,13 @@ int main(void){
 			t.Pintar();
 			cout << "El jugador " << turno << " ha ganado la partida.\n\nJugar otra vez? (si, no) ";
 			cin >> respuesta;
+				continuar = false;
 		}else{
 			if(t.TableroCompleto()){
 				t.Pintar();
 				cout << "Empate. El tablero esta lleno.\n\nJugar otra vez? (si, no) ";
 				cin >> respuesta;
+				continuar = false;
 			}else{
 				if(turno == 'X')
 					turno = 'O';
@@ -164,12 +170,11 @@ int main(void){
 			}
 
 		}
-		if(respuesta == "si"){
-			t.LimpiarTablero();
-			turno = 'X';
-		}else{
-			continuar = false;
-		}
+		if(!continuar && strcmp(respuesta,"si") == 0){
+            t.LimpiarTablero();
+            turno = 'X';
+            continuar = true;
+        }
 	}
 
 	return 0;

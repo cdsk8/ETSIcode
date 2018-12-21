@@ -2,10 +2,11 @@
 #include <cstdlib>
 #include <string.h>
 #include <conio.h>
+#include <stdio.h>
 #include "cdrawer.h"
 
 #define MAX 5
-
+//TODO: El menu de elementos bonito
 typedef char cad[20];
 
 using namespace std;
@@ -52,7 +53,7 @@ void tprod::leestock(int &st){
 	st = stock;
 }
 
-void tprod::vender(int cantidad){
+void tprod::vender(int cantidad){ //Deprecated
 	if(stock >= cantidad){
 		stock -= cantidad;
 		cout << "Total a pagar: " << (cantidad*precio) << "e.\n";
@@ -77,7 +78,7 @@ class almacen{
 };
 
 almacen::almacen(){
-	nprod = 0;
+	vaciar();
 }
 
 void almacen::vaciar(){
@@ -90,7 +91,7 @@ int almacen::existe(cad nom){
 	pos = -1;
 	i = 0;
 
-	while(i < MAX and pos == -1){
+	while(i < nprod and pos == -1){
 		productos[i].leenombre(original);
 		if(strcmp(original,nom) == 0)
 			pos = i;
@@ -105,17 +106,25 @@ void almacen::verprod(int pos, tprod &prod){
 }
 
 int almacen::insertar(tprod P){
+    /*--------------------  Códigos de resultado  ---------------------
+      ------ 0. Correcto ---- 1. Ya existe ---- 2. Almacen lleno ------
+      -----------------------------------------------------------------*/
+    int resultado;
+
 	if(nprod == MAX)
-		return 2;
+		resultado = 2;
+    else{
+        cad nombre;
+        P.leenombre(nombre);
+        if(existe(nombre) != -1)
+            resultado = 1;
+        else{
+            productos[nprod++] = P;
+            resultado = 0;
+        }
+    }
 
-	cad nombre;
-	P.leenombre(nombre);
-	if(existe(nombre) != -1)
-		return 1;
-
-	productos[nprod] = P;
-	nprod++;
-	return 0;
+	return resultado;
 }
 
 void almacen::vertabla(){
@@ -142,28 +151,63 @@ void almacen::vender(int pos, int cant){
 	if(stock >= cant){
 		productos[pos].cambiarstock(stock-cant);
 		//cout << "Total a pagar: " << (cant*precio) << "e.\n";
+		cad nombre;
+		productos[pos].leenombre(nombre);
+		if(strcmp(nombre,"Muskas")==0)
+            dibujarVideo("sources/NYAN/NYAN_",24,24,168,25,100,100);
 		cout << "Total a pagar:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-		dibujarN(cant*precio,50,100,6);
+		Sleep(100);
+		//dibujarN(cant*precio,50,150,6);
+		dibujar("sources/euro.bmp",400,300,RGB(255,0,255),6);
+		dibujarNanim(cant*precio,50,150,3,125,5);
 	}else{
 		cout << "No se dispone de estock suficiente.\n";
 	}
 }
 
-
+void printFor(int ch, int veces = 1){
+    // 0 CRLF 13+10
+    // 1 ╔ 201
+    // 2 ╗ 187
+    // 3 ╚ 200
+    // 4 ╝ 188
+    // 5 ╠ 204
+    // 6 ╣ 185
+    // 7 ╦ 203
+    // 8 ╩ 202
+    // 9 ═ 205
+    //10 ║ 186
+    //11 ╬ 206
+    char chars[12] = {'\n',201,187,200,188,204,185,203,202,205,186,206};
+    for(int i = 0; i < veces; i++){
+        cout << chars[ch];
+    }
+}
+void printFor(char *cadena, int veces = 1){
+    for(int i = 0; i < veces; i++){
+        cout << cadena;
+    }
+}
 char menu(){
 	system("cls");
-	cout << "*************** MENU *****************\n"
-			"******A.- Visualizar la tabla.\t******\n"
-			"******B.- Insertar un producto.\t******\n"
-			"******C.- Vender un producto.\t******\n"
-			"******D.- Vaciar el almacen.\t******\n"
-			"******E.- Salir.\t\t******\n"
-			"**************************************\n"
-			"Pon la opcion que deseas: ";
+	cout << "\n";
+
+    printFor("    ");    printFor(1);    printFor(9,15); printFor(" MENU "); printFor(9,15); printFor(2);    printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",36);   printFor(10);   printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",5); printFor("A.- Visualizar la tabla.");  printFor(" ",7);    printFor(10);    printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",5); printFor("B.- Insertar un producto.");  printFor(" ",6);    printFor(10);    printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",5); printFor("C.- Vender un producto.");  printFor(" ",8);    printFor(10);    printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",5); printFor("D.- Vaciar el almacen.");  printFor(" ",9);    printFor(10);    printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",5); printFor("E.- Salir.");  printFor(" ",21);    printFor(10);    printFor(0);
+    printFor("    ");    printFor(10);   printFor(" ",36);   printFor(10);   printFor(0);
+    printFor("    ");    printFor(3);    printFor(9,36); printFor(4);    printFor(0);
+
+	cout << "\tPon la opcion que deseas: ";
 	char ch;
 	cin >> ch;
 	return ch;
 }
+
 
 int main(void){
 	bool continuar = true;
@@ -174,46 +218,23 @@ int main(void){
 	int i, pos;
 	char ch;
 
-	tprod t;
-	cad nombre;
-    t.leenombre(nombre);
-    cout << nombre;
-
-
 	almacen a;
 
+
 	do{
+        system("cls");
 		switch(menu()){
 			case 'A':
 			case 'a':
-				system("cls");
+			    system("cls");
 				a.vertabla();
 				break;
 			case 'B':
 			case 'b':
-				system("cls");
-
+			    system("cls");
 				cout << "Introduzca el nombre: ";
-				i = 0;
-				do{
-					ch = getch();
-					switch(ch){
-						case '\b':
-							if(i > 0){
-								cout << "\b \b";
-								i--;
-							}
-							break;
-						case '\r':
-							cout << '\n';
-							prodN_tmp[i] = '\0';
-							break;
-						default:
-							cout << ch;
-							prodN_tmp[i] = ch;
-							i++;
-					}
-				}while(ch != '\r');
+				cin.ignore();
+				gets(prodN_tmp);
 				prod_tmp.cambiarnombre(prodN_tmp);
 
 				cout << "Introduzca el precio: ";
@@ -238,29 +259,10 @@ int main(void){
 				break;
 			case 'C':
 			case 'c':
-				system("cls");
-
+			    system("cls");
 				cout << "\nIntroduzca el nombre del producto a vender: ";
-				i = 0;
-				do{
-					ch = getch();
-					switch(ch){
-						case '\b':
-							if(i > 0){
-								cout << "\b \b";
-								i--;
-							}
-							break;
-						case '\r':
-							cout << '\n';
-							prodN_tmp[i] = '\0';
-							break;
-						default:
-							cout << ch;
-							prodN_tmp[i] = ch;
-							i++;
-					}
-				}while(ch != '\r');
+				cin.ignore();
+				gets(prodN_tmp);
 
 				pos = a.existe(prodN_tmp);
 				if(pos == -1){
@@ -274,12 +276,13 @@ int main(void){
 				break;
 			case 'D':
 			case 'd':
-				system("cls");
+			    system("cls");
 				a.vaciar();
 				cout << "Almacen vaciado correctamente.\n";
 				break;
 			case 'E':
 			case 'e':
+			    system("cls");
 				continuar = false;
 				break;
 		}
