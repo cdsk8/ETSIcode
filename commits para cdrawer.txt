@@ -1,2 +1,0 @@
-dibujarN
-	dibujar(src, x+(i*70*(anim>=6?anim-4:1)), y, RGB(255,0,255), anim, speed);
