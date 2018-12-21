@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Enginer:        
--- Create Date:    21:19:27 19/12/2018
+-- Create Date:    19:04:34 21/12/2018
 -- Module Name:    Practica6 - Practica6_Arquitectura
 -- Project Name:   Practica 6.vme
 -- Description:    
@@ -71,3 +71,17 @@ Begin
 		   F6(2) When S = "110" else
 		   F7(2);
 End Practica6_Arquitectura;
+
+--#Implementation, copy this into constrictions file and remove '--' coments.
+--NET "A(1)" LOC = "B4"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 6 ;
+--NET "A(0)" LOC = "A4"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 6 ;
+--NET "B(1)" LOC = "D5"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 6 ;
+--NET "B(0)" LOC = "C5"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 6 ;
+--NET "S(0)" LOC = "L13"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "S(1)" LOC = "L14"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "S(2)" LOC = "H18"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "CI" LOC = "N17"  | IOSTANDARD = LVTTL | PULLUP ;
+--NET "F(0)" LOC = "F12"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+--NET "F(1)" LOC = "E12"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+--NET "CO" LOC = "E11"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+--#Implementation finished

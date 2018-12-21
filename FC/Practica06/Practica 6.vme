@@ -1,5 +1,5 @@
 Entity Practica6
-Architecture Practica6_Arquitectura 
+Architecture Practica6_Arquitectura
 
 Binary[1,0] A, B, F
 Binary CI, CO
@@ -46,3 +46,18 @@ Set CO Switch S
 	F5[2]	Case "101"
 	F6[2]	Case "110"
 	F7[2]	Case "111"
+
+//Restrinciones
+Header1A A[1]
+Header1B A[0]
+Header1C B[1]
+Header1D B[0]
+
+Lever1 S[0]
+Lever2 S[1]
+Lever3 S[2]
+Lever4 CI
+
+Led1 F[0]
+Led2 F[1]
+Led3 CO
