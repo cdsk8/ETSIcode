@@ -62,10 +62,10 @@ Begin
 		  F5(1)&F5(0) When S = "101" else
 		  F6(1)&F6(0) When S = "110" else
 		  F7(1)&F7(0);
-	CO <= '0' When S = "000" else
-		   '0' When S = "001" else
-		   '0' When S = "010" else
-		   '0' When S = "011" else
+	CO <= 'X' When S = "000" else
+		   'X' When S = "001" else
+		   'X' When S = "010" else
+		   'X' When S = "011" else
 		   F4(2) When S = "100" else
 		   F5(2) When S = "101" else
 		   F6(2) When S = "110" else
