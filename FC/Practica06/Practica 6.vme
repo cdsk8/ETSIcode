@@ -3,29 +3,12 @@ Architecture Practica6_Arquitectura
 
 Binary[1,0] A, B, F
 Binary CI, CO
-Binary[2,0] S
-Binary[2,0] F4, F5, F6, F7
+Binary[2,0] F4, F5, F6, F7, S
 
-Integer[0,3] An, Bn, CIn
-An = (Integer) A
-Bn = (Integer) B
-CIn = (Integer) CI
-
-Integer[0,3] F4n
-F4n = An + Bn + CIn
-F4 = (Binary[3]) F4n
-
-Integer[0,3] F5n
-F5n = An - Bn
-F5 = (Binary[3]) F5n
-
-Integer[0,3] F6n
-F6n = An + 1 + CIn
-F6 = (Binary[3]) F6n
-
-Integer[0,3] F7n
-F7n = Bn - 1 - CIn
-F7 = (Binary[3]) F7n
+F4 = ('0'&A) + ('0'&B) + ('0'&CI)
+F5 = ('0'&A) - ('0'&B)
+F6 = ('0'&A) + 1 + ('0'&CI)
+F7 = ('0'&B) - 1 - ('0'&CI)
 
 Set F Switch S
 	A Or B		Case "000"
@@ -38,10 +21,10 @@ Set F Switch S
 	F7[1]&F7[0]	Case "111"
 
 Set CO Switch S
-	'0'		Case "000"
-	'0'		Case "001"
-	'0'		Case "010"
-	'0'		Case "011"
+	'X'		Case "000"
+	'X'		Case "001"
+	'X'		Case "010"
+	'X'		Case "011"
 	F4[2]	Case "100"
 	F5[2]	Case "101"
 	F6[2]	Case "110"

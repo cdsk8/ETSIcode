@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Enginer:        
--- Create Date:    19:04:34 21/12/2018
+-- Create Date:    23:06:15 06/01/2019
 -- Module Name:    Practica6 - Practica6_Arquitectura
 -- Project Name:   Practica 6.vme
 -- Description:    
@@ -26,33 +26,11 @@ Architecture Practica6_Arquitectura of Practica6 is
 	Signal F5 :  STD_LOGIC_VECTOR(2 downto 0);
 	Signal F6 :  STD_LOGIC_VECTOR(2 downto 0);
 	Signal F7 :  STD_LOGIC_VECTOR(2 downto 0);
-	Signal An :  INTEGER range 0 to 3;
-	Signal Bn :  INTEGER range 0 to 3;
-	Signal CIn :  INTEGER range 0 to 3;
-	Signal F4n :  INTEGER range 0 to 3;
-	Signal F5n :  INTEGER range 0 to 3;
-	Signal F6n :  INTEGER range 0 to 3;
-	Signal F7n :  INTEGER range 0 to 3;
 Begin
-	An <= CONV_INTEGER(A);
-	Bn <= CONV_INTEGER(B);
-	CIn <= CONV_INTEGER(CI);
-
-	F4n <= An + Bn + CIn;
-
-	F4 <= CONV_STD_LOGIC_VECTOR(F4n, 3);
-
-	F5n <= An - Bn;
-
-	F5 <= CONV_STD_LOGIC_VECTOR(F5n, 3);
-
-	F6n <= An + 1 + CIn;
-
-	F6 <= CONV_STD_LOGIC_VECTOR(F6n, 3);
-
-	F7n <= Bn - 1 - CIn;
-
-	F7 <= CONV_STD_LOGIC_VECTOR(F7n, 3);
+	F4 <= ('0'&A) + ('0'&B) + ('0'&CI);
+	F5 <= ('0'&A) - ('0'&B);
+	F6 <= ('0'&A) + 1 + ('0'&CI);
+	F7 <= ('0'&B) - 1 - ('0'&CI);
 
 	F <= A Or B When S = "000" else
 		  A Nand B When S = "001" else
