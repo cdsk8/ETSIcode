@@ -1,8 +1,15 @@
 #include <iostream>
 #include <cstdlib>
+#include <conio.h>
 #include <cstring>
+#include "cdrawer.h"
 
 using namespace std;
+
+const int posX[3] = {160,201,244};
+const int posY[3] = {81,119,158};
+char* fondoX = "sources/game/background_X.bmp";
+char* fondoO = "sources/game/background_O.bmp";
 
 class TicTacToe{
 	private:
@@ -10,7 +17,7 @@ class TicTacToe{
 	public:
 		TicTacToe();
 		void LimpiarTablero();
-		void Pintar();
+		void Pintar(char turno, bool ganador);
 		bool PonerFicha(char ficha, int fila, int columna);
 		bool ComprobarFila(char ficha, int fila);
 		bool ComprobarColumna(char ficha, int columna);
@@ -23,33 +30,46 @@ TicTacToe::TicTacToe(){
 }
 
 void TicTacToe::LimpiarTablero(){
-	for(int i = 0; i < 3; i++){
-		for(int j = 0; j < 3; j++){
+	for(int i = 0; i < 3; i++)
+		for(int j = 0; j < 3; j++)
 			Tablero[i][j] = ' ';
-		}
-	}
 }
 
-void TicTacToe::Pintar(){
+void TicTacToe::Pintar(char turno, bool ganador){
 	system("cls");
-	cout << char(201)<<char(205)<<char(203)<<char(205)<<char(203)<<char(205)<<char(187)<<"\n";
+	dibujar(turno=='X'?fondoX:fondoO, 5, 5, 0, 6);
+
 	for(int i = 0; i < 3; i++){
-        cout << char(186);
 		for(int j = 0; j < 3; j++){
-			cout << Tablero[i][j];
-			if(j != 2)
-				cout << char(186);
+                if(Tablero[i][j]=='X')
+                    dibujar("sources/game/spr_sonic_head.bmp", posX[j], posY[i], RGB(255,0,255), 6);
+                else if(Tablero[i][j]=='O')
+                    dibujar("sources/game/spr_tails_head.bmp", posX[j]+1, posY[i]+1, RGB(255,0,255), 6);
+
 		}
-		cout << char(186) << "\n";
-		if(i != 2)
-			cout << char(204)<<char(205)<<char(206)<<char(205)<<char(206)<<char(205)<<char(185)<<"\n";
 	}
-	cout << char(200)<<char(205)<<char(202)<<char(205)<<char(202)<<char(205)<<char(188)<<"\n";
+
+	if(ganador){
+        if(turno=='X'){
+            dibujar("sources/game/spr_tails_static.bmp", 315, 145, RGB(255,0,255), 6,100, true);
+            dibujarAnim("sources/game/spr_sonic_X.bmp", 25, 110, RGB(255,0,255), 16, 2, 75, 1);
+        }else{
+            dibujar("sources/game/spr_sonic_static.bmp", 25, 110, RGB(255,0,255), 6);
+            dibujarAnim("sources/game/spr_tails_X.bmp", 315, 145, RGB(255,0,255), 19, 2, 75, 1, true);
+        }
+	}else{
+        dibujar("sources/game/spr_sonic_static.bmp", 25, 110, RGB(255,0,255), 6);
+        dibujar("sources/game/spr_tails_static.bmp", 315, 145, RGB(255,0,255), 6, 100, true);
+	}
 }
 
 bool TicTacToe::PonerFicha(char ficha, int fila, int columna){
 	if(Tablero[fila][columna] == ' '){
 		Tablero[fila][columna] = ficha;
+		/*if(ficha=='X')
+            dibujar("sources/game/spr_sonic_head.bmp", posX[columna], posY[fila], RGB(255,0,255), 6);
+        else if(ficha=='O')
+            dibujar("sources/game/spr_tails_head.bmp", posX[columna]+1, posY[fila]+1, RGB(255,0,255), 6);*/
 		return true;
 	}
 	return false;
@@ -95,80 +115,87 @@ bool TicTacToe::TableroCompleto(){
 void pedirPosicion(char ficha, int &fila, int &columna){
 	bool error;
 
-	cout << "Jugador " << ficha << ", es su turno.\n";
-
 	do{
-		cout << "Introduzca la fila: ";
-		cin >> fila;
-
-		if(fila < 1 or fila > 3){
-			cout << "Error, la fila no puede ser inferior a 1 ni superior a 3.\n";
-			error = true;
-		}else{
-			error = false;
+		error = false;
+		switch(getche()){
+			case '7':
+				fila = 0;
+				columna = 0;
+				break;
+			case '8':
+				fila = 0;
+				columna = 1;
+				break;
+			case '9':
+				fila = 0;
+				columna = 2;
+				break;
+			case '4':
+				fila = 1;
+				columna = 0;
+				break;
+			case '5':
+				fila = 1;
+				columna = 1;
+				break;
+			case '6':
+				fila = 1;
+				columna = 2;
+				break;
+			case '1':
+				fila = 2;
+				columna = 0;
+				break;
+			case '2':
+				fila = 2;
+				columna = 1;
+				break;
+			case '3':
+				fila = 2;
+				columna = 2;
+				break;
+			default:
+				error = true;
+				break;
 		}
 	}while(error);
-
-	do{
-		cout << "Introduzca la columna: ";
-		cin >> columna;
-
-		if(columna < 1 or columna > 3){
-			cout << "Error, la columna no puede ser inferior a 1 ni superior a 3.\n";
-			error = true;
-		}else{
-			error = false;
-		}
-	}while(error);
-
-	fila--;
-	columna--;
 
 	cout << "\n";
 }
 
 int main(void){
 	TicTacToe t;
-	char respuesta[3];
-	bool error, continuar = true;
+	char respuesta[3] = "si";
+	bool error, continuar = true, terminado = false;
 	char turno = 'X';
 	int fila, columna;
 
 	while(continuar){
 		do{
-			t.Pintar();
+			t.Pintar(turno, false);
 			pedirPosicion(turno, fila, columna);
 
-			if(t.PonerFicha(turno, fila, columna)){
-				error = false;
-			}else{
-				cout << "Posicion introducida no valida, pulsa para reintentar.";
-				cin.ignore();
-				cin.ignore();
-				error = true;
-			}
+			error = !t.PonerFicha(turno, fila, columna);
 		}while(error);
 
 		if(t.ComprobarColumna(turno, columna) or t.ComprobarFila(turno, fila) or t.ComprobarDiagonal(turno, fila, columna)){
-			t.Pintar();
-			cout << "El jugador " << turno << " ha ganado la partida.\n\nJugar otra vez? (si, no) ";
-			cin >> respuesta;
-				continuar = false;
+			t.Pintar(turno, true);
+			continuar = getch()=='s';
+			terminado = true;
 		}else{
 			if(t.TableroCompleto()){
-				t.Pintar();
-				cout << "Empate. El tablero esta lleno.\n\nJugar otra vez? (si, no) ";
-				cin >> respuesta;
-				continuar = false;
+				t.Pintar(turno, false);
+				continuar = getch()=='s';
+                terminado = true;
 			}else{
-				turno = turno=='X'?'O':'X';
+			    turno = turno=='X'?'O':'X';
 			}
-
 		}
-		if(!continuar && strcmp(respuesta,"si") == 0){
+		if(continuar && terminado){
             t.LimpiarTablero();
             turno = 'X';
             continuar = true;
+            terminado = false;
         }
 	}
 

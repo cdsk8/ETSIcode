@@ -76,16 +76,15 @@ bool TicTacToe::TableroCompleto(){
 	bool completo = true;
 	int i, j;
 
-	i = j = 0;
-	while(j < 3 && completo){
-		if(Tablero[i][j] == ' ')
-			completo = false;
-
+	i = 0;
+	while(i < 3 && completo){
+        j = 0;
+        while(j < 3 && completo){
+            if(Tablero[i][j] == ' ')
+                completo = false;
+            j++;
+        }
 		i++;
-		if(i == 3){
-			i = 0;
-			j++;
-		}
 	}
 
 	return completo;
@@ -158,11 +157,7 @@ int main(void){
 			t.Pintar();
 			pedirPosicion(turno, fila, columna);
 
-			if(t.PonerFicha(turno, fila, columna)){
-				error = false;
-			}else{
-				error = true;
-			}
+			error = !t.PonerFicha(turno, fila, columna);
 		}while(error);
 
 		if(t.ComprobarColumna(turno, columna) or t.ComprobarFila(turno, fila) or t.ComprobarDiagonal(turno, fila, columna)){
@@ -177,10 +172,7 @@ int main(void){
 				cin >> respuesta;
 				continuar = false;
 			}else{
-				if(turno == 'X')
-					turno = 'O';
-				else
-					turno = 'X';
+			    turno = turno=='X'?'O':'X';
 			}
 		}
 		if(!continuar && strcmp(respuesta,"si") == 0){
