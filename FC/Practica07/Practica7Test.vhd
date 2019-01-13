@@ -1,32 +1,33 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
-ENTITY Practica7CircuitoTest IS
-END Practica7CircuitoTest;
+
+ENTITY Practica7Test IS
+END Practica7Test;
  
-ARCHITECTURE behavior OF Practica7CircuitoTest IS 
+ARCHITECTURE behavior OF Practica7Test IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT Practica7Circuito
+    COMPONENT Practica7
     PORT(
-         E_inicial : IN  std_logic;
+         E : IN  std_logic;
          RS : IN  std_logic;
          CK : IN  std_logic;
          S : OUT  std_logic;
-         Q : OUT  std_logic_vector(2 downto 0)
+			Q : OUT  std_logic_vector(2 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal E_inicial : std_logic := '0';
+   signal E : std_logic := '0';
    signal RS : std_logic := '0';
    signal CK : std_logic := '0';
 
  	--Outputs
    signal S : std_logic;
-   signal Q : std_logic_vector(2 downto 0);
+	signal Q : std_logic_vector(2 downto 0);
    -- No clocks detected in port list. Replace CK below with 
    -- appropriate port name 
  
@@ -35,12 +36,12 @@ ARCHITECTURE behavior OF Practica7CircuitoTest IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: Practica7Circuito PORT MAP (
-          E_inicial => E_inicial,
+   uut: Practica7 PORT MAP (
+          E => E,
           RS => RS,
           CK => CK,
           S => S,
-          Q => Q
+			 Q => Q
         );
 
    -- Clock process definitions
@@ -61,14 +62,14 @@ BEGIN
 
       wait for CK_period*10;
 
-      -- insert stimulus here --Ejecutar durante 700 ns
+      -- insert stimulus here 
 		E<='0';RS<='0'; Wait for 20 ns;
 		RS<='1'; Wait for 20 ns;
 		RS<='0';
 		
 		
 		--Intento de encendido fallido en POS 1, camino L.
-		E<='0';					  --GOTO L1
+		E<='0'; 						--GOTO L1
 		E<='1'; Wait for 20 ns; --GOTO RS
 		
 		--Intento de encendido fallido en POS 2, camino L.
@@ -83,7 +84,7 @@ BEGIN
 		E<='1'; Wait for 20 ns; --GOTO RS
 		
 		--Intento de encendido fallido en POS 1, camino H.
-		E<='1';					  --GOTO H1
+		E<='1';					   --GOTO H1
 		E<='0'; Wait for 20 ns; --GOTO RS
 		
 		--Intento de encendido fallido en POS 2, camino H.

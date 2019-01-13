@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity Practica7Circuito is
-	Port(	E_inicial, RS, CK:in STD_LOGIC;
+	Port(	E, RS, CK:in STD_LOGIC;
 			S:out STD_LOGIC;
 			Q:out STD_LOGIC_VECTOR(2 downto 0));
 end Practica7Circuito;
@@ -18,7 +18,7 @@ architecture Behavioral of Practica7Circuito is
 	end component;
 begin
 	AR: ANTIRREBOTES PORT MAP (
-		E => E_inicial,
+		E => E,
 		S => E_estable,
 		CLK_50MHZ => CK
 	);
