@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
--- Enginer:        
+-- Enginer:        Borja López
 -- Create Date:    23:06:15 06/01/2019
 -- Module Name:    Practica6 - Practica6_Arquitectura
 -- Project Name:   Practica 6.vme
@@ -27,10 +27,10 @@ Architecture Practica6_Arquitectura of Practica6 is
 	Signal F6 :  STD_LOGIC_VECTOR(2 downto 0);
 	Signal F7 :  STD_LOGIC_VECTOR(2 downto 0);
 Begin
-	F4 <= ('0'&A) + ('0'&B) + ('0'&CI);
-	F5 <= ('0'&A) - ('0'&B);
-	F6 <= ('0'&A) + 1 + ('0'&CI);
-	F7 <= ('0'&B) - 1 - ('0'&CI);
+	F4 <= ('0'&A) + ('0'&B) + ('0'&'0'&CI);
+	F5 <= ('0'&A) - ('0'&'0'&B);
+	F6 <= ('0'&A) + 1 + ('0'&'0'&CI);
+	F7 <= ('0'&B) - 1 - ('0'&'0'&CI);
 
 	F <= A Or B When S = "000" else
 		  A Nand B When S = "001" else
