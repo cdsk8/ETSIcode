@@ -35,3 +35,28 @@
 11. Comentarios con %comentario
 12. vpa(numero,digitos) redondea o trunca un numero
 13. Para acabar "diary off"
+
+
+Día 2.
+
+1. Matlab dibuja con el comando >> plot(x,y)
+	EJ: Crear dos vectores con X=[1 2 3];Y = [-2 5 0];plot(X,Y)
+	1.1 Para mostrar la cuadrícula >> grid on"
+	1.2 El tercer parametro de plot se usa para definir el como se pinta el plot. >> help plot
+	1.3 Varias funciones en la misma ventana >> plot(x1,y1,'g',x2,y2,'c')
+	1.4 Mantener los dibujos >> hold on
+	1.5 para 
+2. Dibujar poligonos cerrados: los vectores deben ser palindromos.
+3. Dibujar funciones "más continuas", usar linspace
+	>> x=linspace(-pi,pi,200);
+	>> y = sin(x);
+	>> plot(x,y)
+4. Para limpiar variables >> clear all
+5. Metodo de bisección: por bolzano
+	Descomponer en interbalos, hasta acotar la raiz (el punto donde es 0) con un error tolerable.
+	Debe ser (|b-a|)/(2^n)
+	5.1 Crear un archivo ".m"
+	5.2 Sintaxis: "function[salidas]=nombre(entradas)"
+	5.3 Comando "feval(f,a)" Evalua f en a "f(a)"
+	5.4 Comprobar que dos variables son del mismo signo "a*b >0"
+	
