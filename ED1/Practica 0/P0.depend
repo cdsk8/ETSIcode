@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1551798039 source:c:\users\arlin-t2\desktop\etsicode\ed1\quebrado.cpp
+	<iostream>
+	<stdlib.h>
+	"quebrado.h"
+
+1551793972 c:\users\arlin-t2\desktop\etsicode\ed1\quebrado.h
+
+1551794608 source:c:\users\arlin-t2\desktop\etsicode\ed1\complejo.cpp
+	<iostream>
+	"complejo.h"
+
+1551794404 c:\users\arlin-t2\desktop\etsicode\ed1\complejo.h
+
+1551798011 source:c:\users\arlin-t2\desktop\etsicode\ed1\practica0.cpp
+	<iostream>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"quebrado.h"
+	"complejo.h"
+	"matriz.h"
+
+1551797978 c:\users\arlin-t2\desktop\etsicode\ed1\matriz.h
+	"quebrado.h"
+
