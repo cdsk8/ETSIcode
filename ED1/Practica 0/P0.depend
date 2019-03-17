@@ -25,3 +25,35 @@
 1551797978 c:\users\arlin-t2\desktop\etsicode\ed1\matriz.h
 	"quebrado.h"
 
+1552810726 source:c:\users\margaret\desktop\etsicode\ed1\practica 0\complejo.cpp
+	<iostream>
+	"complejo.h"
+
+1552810726 c:\users\margaret\desktop\etsicode\ed1\practica 0\complejo.h
+
+1552810726 source:c:\users\margaret\desktop\etsicode\ed1\practica 0\matriz.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	"matriz.h"
+
+1552810726 c:\users\margaret\desktop\etsicode\ed1\practica 0\matriz.h
+	"quebrado.h"
+
+1552810726 c:\users\margaret\desktop\etsicode\ed1\practica 0\quebrado.h
+
+1552810726 source:c:\users\margaret\desktop\etsicode\ed1\practica 0\practica0.cpp
+	<iostream>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"quebrado.h"
+	"complejo.h"
+	"matriz.h"
+
+1552810726 source:c:\users\margaret\desktop\etsicode\ed1\practica 0\quebrado.cpp
+	<iostream>
+	<stdlib.h>
+	"quebrado.h"
+
