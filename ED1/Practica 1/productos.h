@@ -7,9 +7,9 @@ using namespace std;
 
 struct producto{
     Sfecha ultimaventa;
-    int unidades;
+    int unidades;   //Unidades vendidas
     int producto;
-    float importe;
+    float importe;  //Total de las ventas de ese producto
     int tipo;
     char nombre[20];
 };
@@ -25,8 +25,8 @@ public:
     ~productos();
     int getmaxcatalogo();
     void setmaxcatalogo(int num);
-    int getnumproductos(){return numproductos;};
-    void setnumproductos(int num){numproductos=num;};
+    int getnumproductos();
+    void setnumproductos(int num);
     void mostrarproductos();
     void mostrarventas();
     bool anadirventa();
