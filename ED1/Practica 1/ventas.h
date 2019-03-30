@@ -25,11 +25,12 @@ class ventas{
     cadena fichero;         //Ventas.dat
     cadena ficheroresumen;  //resumen.dat
 public:
-    void anadirventa(int num);
-    void mostrarventas();
+    void anadirventa(int num);  //CHECK
+    void mostrarventas();  //CHECK
     void resumirfichero();
     void estadisticas(int tipo,int annoini,int annofin);
-    bool asignar(cadena Fichero,cadena FicheroResumen);
+    void estadisticas2(int tipo,int annoini,int annofin);
+    bool asignar(cadena Fichero,cadena FicheroResumen);  //CHECK
 };
 
 #endif // VENTAS_H_INCLUDED

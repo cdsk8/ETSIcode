@@ -1,0 +1,87 @@
+# depslib dependency file v1.0
+1553353324 source:c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\main.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<cstring>
+	"ventas.h"
+	"productos.h"
+
+1553341345 c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\ventas.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1553344034 c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\productos.h
+	<fstream>
+	"ventas.h"
+
+1553327034 source:c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\vector.cpp
+	"vector.h"
+
+1553327034 c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\vector.h
+
+1553353568 source:c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\ventas.cpp
+	"ventas.h"
+	"productos.h"
+
+1553352283 source:c:\users\margaret\desktop\etsicode\ed1\practica 1\practica 1\productos.cpp
+	"productos.h"
+	<conio.h>
+
+1553599957 source:c:\users\usuario\desktop\practica 1\main.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<cstring>
+	"ventas.h"
+	"productos.h"
+
+1553599586 c:\users\usuario\desktop\practica 1\ventas.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1553600000 c:\users\usuario\desktop\practica 1\productos.h
+	<fstream>
+	"ventas.h"
+
+1553599994 source:c:\users\usuario\desktop\practica 1\productos.cpp
+	"productos.h"
+	<conio.h>
+
+1553418503 source:c:\users\usuario\desktop\practica 1\vector.cpp
+	"vector.h"
+
+1553418503 c:\users\usuario\desktop\practica 1\vector.h
+
+1553600727 source:c:\users\usuario\desktop\practica 1\ventas.cpp
+	"ventas.h"
+	"productos.h"
+
+1553599958 source:d:\practica 1\main.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<cstring>
+	"ventas.h"
+	"productos.h"
+
+1553599588 d:\practica 1\ventas.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1553600002 d:\practica 1\productos.h
+	<fstream>
+	"ventas.h"
+
+1553599996 source:d:\practica 1\productos.cpp
+	"productos.h"
+	<conio.h>
+
+1553418504 source:d:\practica 1\vector.cpp
+	"vector.h"
+
+1553418504 d:\practica 1\vector.h
+
