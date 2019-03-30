@@ -30,13 +30,14 @@ void ConjuntoInt::GeneraVector (int tam)
  tamano=tam;
  srand( (unsigned)time( NULL ) ); //srand(time(0));
  for (int i= 0; i<tamano; i++){
-     datos[i] = rand()%1000; //genera un número aleatorio entre 1 y 999
+     datos[i] = rand()%10000; //genera un número aleatorio entre 1 y 999
  }
 }
 int ConjuntoInt::generaKey()
 {
  srand( (unsigned)time( NULL ) ); //srand(time(0));
- return rand()%1000; //genera un número aleatorio entre 1 y 999
+ return datos[tamano / 2];
+ //return rand()%10000; //genera un número aleatorio entre 1 y 999
 }
 void ConjuntoInt::escribe()
 {

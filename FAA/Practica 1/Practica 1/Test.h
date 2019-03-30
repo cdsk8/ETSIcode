@@ -41,6 +41,10 @@ public:
 		 * param metodo3: Segundo algoritmo a comparar
      */
     void compararTeorico(int metodo1, int metodo2, int metodo3);
+
+
+	void costeEmpirico(int numerocaso);
+	void compararEmpirico(int metodo1, int metodo2, int metodo3);
 };
 
 #endif

@@ -19,8 +19,9 @@ using namespace std;
 
 const int SECUENCIALPEOR = 0, SECUENCIALMEDIO = 1, SECUENCIALMEJOR = 2;
 const int tallaIni = 1000,
-tallaFin = 10000,
-incTalla = 1000;
+	tallaFin = 10000,
+	incTalla = 1000;
+const int REPETICIONES = 1e3;
 
 TestAlgoritmo::TestAlgoritmo()
 {
@@ -164,6 +165,195 @@ void TestAlgoritmo::compararTeorico(int metodo1, int metodo2, int metodo3) {
 		system("pause");
 		system("cls");
 }
+
+void TestAlgoritmo::costeEmpirico(int numerocaso)
+{
+	ofstream f(nombreAlgoritmoCaso[numerocaso] + "Empirico.dat");
+	system("cls");
+	cout << endl << "Busqueda " << nombreAlgoritmoCaso[numerocaso] + " Empirico";
+	cout << "Tiempos de ejecucion " << endl << endl;
+	cout << endl;;
+	cout << "\tTalla\t\tTiempo (ms)" << endl << endl;
+	double tiempo = 0;
+	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
+	{
+		LARGE_INTEGER t_ini, t_fin;
+		Mtime t;
+
+		switch (numerocaso) {
+		case SECUENCIALPEOR: /*Caso peor (T(n)= 7n+9)*/
+		{
+			for (int i = 0; i < REPETICIONES; i++) {
+				ConjuntoInt conjunto(talla);
+				conjunto.GeneraVector(talla);
+
+				QueryPerformanceCounter(&t_ini);
+
+				conjunto.busquedaSecuencial(-1);
+
+				QueryPerformanceCounter(&t_fin);
+				tiempo += t.performancecounter_diff(&t_fin, &t_ini);
+			}
+		}
+		break;
+		case SECUENCIALMEDIO:/*Caso medio (T(n)= (7/2)n+9)*/
+		{
+			for (int i = 0; i < REPETICIONES; i++) {
+				ConjuntoInt conjunto(talla);
+				conjunto.GeneraVector(talla);
+
+				QueryPerformanceCounter(&t_ini);
+
+				conjunto.busquedaSecuencial(conjunto.generaKey());
+
+				QueryPerformanceCounter(&t_fin);
+				tiempo += t.performancecounter_diff(&t_fin, &t_ini);
+			}
+		}
+		break;
+		case SECUENCIALMEJOR:/*Caso mejor (T(n)= 9)*/
+		{
+			for (int i = 0; i < REPETICIONES; i++) {
+				ConjuntoInt conjunto(talla);
+				conjunto.GeneraVector(talla);
+
+				QueryPerformanceCounter(&t_ini);
+
+				conjunto.busquedaSecuencial(conjunto.getPrimero());
+
+				QueryPerformanceCounter(&t_fin);
+				tiempo += t.performancecounter_diff(&t_fin, &t_ini);
+			}
+		}
+		break;
+		}
+
+		tiempo *= 1000.0/REPETICIONES;
+
+
+		f << talla << "\t" << tiempo << endl;
+		cout << "\t" << talla << "\t\t" << setw(10) << setprecision(2) << (double)tiempo << " \t\t" << endl;
+		cout << endl;
+	}
+	f.close();
+	cout << endl << "Datos guardados en el fichero " << nombreAlgoritmoCaso[numerocaso] << "Empirico.dat " << endl;
+
+	/* Generar grafica */
+	char opc;
+	cout << endl << "Generar grafica de resultados? (s/n): ";
+	cin >> opc;
+	switch (opc) {
+	case 's':
+	case 'S': {
+		int orden;
+		switch (numerocaso)
+		{
+		case SECUENCIALMEJOR:
+		{
+			/* Ejecutar el fichero por lotes (comandos)*/
+			system("start CmdMejorEmpirico.gpl"); system("cls");
+			cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[numerocaso] + "Empirico" << ".pdf" << endl;
+		}
+		break;
+		case SECUENCIALPEOR:
+		{
+			/* Ejecutar el fichero por lotes (comandos)*/
+			system("start CmdPeorEmpirico.gpl"); system("cls");
+			cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[numerocaso] + "Empirico" << ".pdf" << endl;
+		}
+		break;
+		case SECUENCIALMEDIO:
+		{
+			/* Ejecutar el fichero por lotes (comandos)*/
+			system("start CmdMedioEmpirico.gpl");
+			system("cls");
+			//system((gpl).c_str());
+			cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[numerocaso] + "Empirico" << ".pdf" << endl;
+		}
+		break;
+		default: {cout << "Error caso " << endl; }
+				 break;
+		}
+	default: {cout << "Grafica no guardada en fichero " << endl; }
+			 break;
+	}
+	}
+	cout << endl;
+	system("pause");
+	system("cls");
+
+}
+void TestAlgoritmo::compararEmpirico(int metodo1, int metodo2, int metodo3) {
+
+	//Graficas g;
+	ofstream f(nombreAlgoritmoCaso[metodo1] + nombreAlgoritmoCaso[metodo2] + nombreAlgoritmoCaso[metodo3] + "Empirico.dat");
+	system("cls");
+	cout << endl << "Busqueda Secuencial" << " Empirico";
+	cout << ". Tiempos de ejecucion " << endl << endl;
+	cout << endl;;
+	cout << "\tTalla\t\tTiempo (oe)" << endl << endl;
+	double tiempoPeor = 0; double tiempoMedio = 0; double tiempoMejor = 0;
+
+	LARGE_INTEGER t_ini, t_fin;
+	Mtime t;
+
+	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
+	{
+		for (int i = 0; i < REPETICIONES; i++) {
+			ConjuntoInt conjunto(talla);
+			conjunto.GeneraVector(talla);
+
+			QueryPerformanceCounter(&t_ini);
+			conjunto.busquedaSecuencial(-1);
+			QueryPerformanceCounter(&t_fin);
+			tiempoPeor += t.performancecounter_diff(&t_fin, &t_ini);
+
+			QueryPerformanceCounter(&t_ini);
+			conjunto.busquedaSecuencial(conjunto.generaKey());
+			QueryPerformanceCounter(&t_fin);
+			tiempoMedio += t.performancecounter_diff(&t_fin, &t_ini);
+
+			QueryPerformanceCounter(&t_ini);
+			conjunto.busquedaSecuencial(conjunto.getPrimero());
+			QueryPerformanceCounter(&t_fin);
+			tiempoMejor += t.performancecounter_diff(&t_fin, &t_ini);
+		}
+
+		tiempoPeor *= 1000.0 / REPETICIONES;
+		tiempoMedio *= 1000.0 / REPETICIONES;
+		tiempoMejor *= 1000.0 / REPETICIONES;
+
+
+		/*escribir en el fichero*/
+		f << talla << "\t" << tiempoPeor << "\t" << tiempoMedio << "\t" << tiempoMejor << endl;
+		/*Visualizar en pantalla*/
+		cout << "\t" << talla << "\t\t" << setw(10) << setprecision(2) << (double)tiempoPeor << " \t" << setw(10) << setprecision(2) << (double)tiempoMedio << " \t" << setw(10) << setprecision(2) << (double)tiempoMejor << " \t\t" << endl;
+		cout << endl;
+	}
+	f.close();
+	cout << endl << "Datos guardados en el fichero " << nombreAlgoritmoCaso[metodo1] + nombreAlgoritmoCaso[metodo2] + nombreAlgoritmoCaso[metodo3] << "Empirico.dat " << endl;
+	/* Generar grafica */
+	char opc;
+	cout << endl << "Generar grafica de resultados? (s/n): ";
+	cin >> opc;
+	switch (opc) {
+	case 's':
+	case 'S': {
+		/* Ejecutar el fichero por lotes (comandos)*/
+		system("start CmdCompararEmpirico.gpl"); system("cls");
+		//system((gpl).c_str());
+		cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[metodo1] + nombreAlgoritmoCaso[metodo2] + nombreAlgoritmoCaso[metodo3] + "Empirico" << ".pdf" << endl;
+	}
+			  break;
+	default: cout << "Grafica no guardada en fichero " << endl;
+		break;
+	}
+	cout << endl;
+	system("pause");
+	system("cls");
+}
+
+
 void TestAlgoritmo::comprobarAlgoritmo() {
 	int talla, clave;
 	cout << "Introduzca la talla: ";

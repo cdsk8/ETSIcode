@@ -1,0 +1,15 @@
+#ESTE ES UN SCRIPT DE GNUPLOT PARA ESTUDIO DE 1 METODO
+set title "SecuencialPeorEmpirico"
+set key top left vertical inside
+set grid
+set xlabel "Talla (n)"
+set ylabel "Tiempo (ms)"
+
+set xrange [1000:10000]
+set yrange [0:0.2]
+
+plot "SecuencialPeorEmpirico.dat" using 1:2 with lines  title "SecuencialMejorEmpirico"
+set terminal pdf
+set output "SecuencialMejorEmpirico.pdf"
+replot
+pause 5 "Pulsa Enter para continuar..."

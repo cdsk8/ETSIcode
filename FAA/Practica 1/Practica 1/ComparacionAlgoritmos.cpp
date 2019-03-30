@@ -156,9 +156,17 @@ int main(){
 			test.compararTeorico(0, 1, 2);
 			break;
 		case 6://Practico caso Peor
+			test.costeEmpirico(0);
+			break;
 		case 7://Practico caso Medio
+			test.costeEmpirico(1);
+			break;
 		case 8://Practico caso Mejor
+			test.costeEmpirico(2);
+			break;
 		case 9://Practico Comparativa
+			test.compararEmpirico(0, 1, 2);
+			break;
 		case 0://Salir
 			break;
 		}

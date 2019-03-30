@@ -1,4 +1,6 @@
 ﻿  Test.cpp
-c:\users\margaret\desktop\etsicode\faa\practica 1\practica 1\test.cpp(83): warning C4101: 'orden': variable local sin referencia
-c:\users\margaret\desktop\etsicode\faa\practica 1\practica 1\test.cpp(136): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\margaret\desktop\etsicode\faa\practica 1\practica 1\test.cpp(24): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\margaret\desktop\etsicode\faa\practica 1\practica 1\test.cpp(84): warning C4101: 'orden': variable local sin referencia
+c:\users\margaret\desktop\etsicode\faa\practica 1\practica 1\test.cpp(137): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\margaret\desktop\etsicode\faa\practica 1\practica 1\test.cpp(248): warning C4101: 'orden': variable local sin referencia
   Practica 1.vcxproj -> C:\Users\Margaret\Desktop\ETSIcode\FAA\Practica 1\Practica 1\Debug\Practica 1.exe

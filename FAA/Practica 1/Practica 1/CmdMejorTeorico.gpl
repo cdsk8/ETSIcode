@@ -3,7 +3,7 @@ set title " SecuencialMejorTeorico"
 set key top left vertical inside
 set grid
 set xlabel "Talla (n)"
-set ylabel "Tiempo (ms)"
+set ylabel "Tiempo (OE)"
 plot "SecuencialMejorTeorico.dat" using 1:2
 C(x) = a
 fit C(x) "SecuencialMejorTeorico.dat" using 1:2 via a
