@@ -103,9 +103,13 @@ bool productos::anadirventa(){
             ven.anadirventa(id);
     }else{
         //La ID no existe, se crea el producto.
+<<<<<<< HEAD
         id = ++maxcatalogo;
         numproductos++;
 
+=======
+        id = maxcatalogo+1;
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30
         p.producto = id;    //Inicializar el producto
         p.importe = 0;
         p.unidades = 0;
@@ -137,6 +141,9 @@ void productos::actualizarresumen(){
 void productos::obtenerestadisticas(int tipo,int annoini,int annofin){
     ven.estadisticas(tipo, annoini, annofin);
 }
+<<<<<<< HEAD
 void productos::obtenerestadisticas2(int tipo,int annoini,int annofin){
     ven.estadisticas2(tipo, annoini, annofin);
 }
+=======
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30

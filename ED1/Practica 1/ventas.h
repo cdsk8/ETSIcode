@@ -29,7 +29,10 @@ public:
     void mostrarventas();  //CHECK
     void resumirfichero();
     void estadisticas(int tipo,int annoini,int annofin);
+<<<<<<< HEAD:ED1/Practica 1/ventas.h
     void estadisticas2(int tipo,int annoini,int annofin);
+=======
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30:ED1/Practica 1/ventas.h
     bool asignar(cadena Fichero,cadena FicheroResumen);  //CHECK
 };
 

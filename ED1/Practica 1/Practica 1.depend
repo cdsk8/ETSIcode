@@ -29,6 +29,7 @@
 	"productos.h"
 	<conio.h>
 
+<<<<<<< HEAD
 1553599957 source:c:\users\usuario\desktop\practica 1\main.cpp
 	<iostream>
 	<conio.h>
@@ -85,3 +86,5 @@
 
 1553418504 d:\practica 1\vector.h
 
+=======
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30

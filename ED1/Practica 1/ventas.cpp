@@ -1,17 +1,23 @@
 #include "ventas.h"
 #include "productos.h"
 
+<<<<<<< HEAD
 #define SALTO 2
 
+=======
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30
 using namespace std;
 
 bool compararFecha(Sfecha f1, Sfecha f2);
 void intercambiar(producto *p1, producto *p2);
 void Burbuja(producto **prods, int inicio, int fin);
 
+<<<<<<< HEAD
 void intercambiar2(producto p1, producto p2);
 void Burbuja2(producto *prods, int inicio, int fin);
 
+=======
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30
 
 bool ventas::asignar(cadena Fichero,cadena FicheroResumen){
     strcpy(fichero, Fichero);
@@ -196,6 +202,7 @@ void Burbuja(producto **prods, int inicio, int fin){
                 intercambiar(prods[ele-1], prods[ele]);//Funciín genérica que tendrá que ser implementada
 }
 
+<<<<<<< HEAD
 void ventas::estadisticas2(int tipo,int annoini,int annofin){
     resumirfichero();   //Actualizar resumen
 
@@ -266,3 +273,5 @@ void Burbuja2(producto *prods, int inicio, int fin){
             if(prods[ele-1].importe > prods[ele].importe)
                 intercambiar2(prods[ele-1], prods[ele]);//Funciín genérica que tendrá que ser implementada
 }
+=======
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30

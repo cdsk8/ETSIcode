@@ -51,7 +51,11 @@ int main(void){
                 cout << "Introduzca el anno de inicio y fin: ";
                 cin >> annoInicio >> annoFin;
                 cout << "\n\n";
+<<<<<<< HEAD
                 prods.obtenerestadisticas2(tipo, annoInicio, annoFin);
+=======
+                prods.obtenerestadisticas(tipo, annoInicio, annoFin);
+>>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30
             break;
             default:
                 cout << "\n\tIntroduzca una opcion valida.";
