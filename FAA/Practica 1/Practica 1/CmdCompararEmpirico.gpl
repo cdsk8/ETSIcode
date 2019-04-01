@@ -1,5 +1,5 @@
 	#ESTE ES UN SCRIPT DE GNUPLOT PARA COMPARACION DE LOS CASOS DE UN ALGORITMO
-set title " tiempos SecuencialPeorTeorico , SecuencialMedioTeorico y SecuencialMejorTeorico"
+set title " tiempos SecuencialPeorEmpirico , SecuencialMedioEmpirico y SecuencialMejorEmpirico"
 set key top left vertical inside
 set grid
 set xlabel "Talla (n)"
