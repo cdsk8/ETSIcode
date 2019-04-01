@@ -1,10 +1,10 @@
-/* 
+/*
  * La clase Test contiene los metodos para:
  * 1. Comprobar que el/los algoritmos funcionan adecuadamente.
  * 2. Calcular la eficiencia para los casos de un método de búsqueda,
- *    permitiendo guardar los datos e imprimir la gráfica correspondiente 
+ *    permitiendo guardar los datos e imprimir la gráfica correspondiente
  * 3. Comparar el coste temporal de los casos de búsqueda
- *    secuencial, permitiendo guardar los datos e imprimir la 
+ *    secuencial, permitiendo guardar los datos e imprimir la
  *    gráfica correspondiente.
  */
 #include "Test.h"
@@ -28,7 +28,10 @@ TestAlgoritmo::TestAlgoritmo()
 	nombreAlgoritmoCaso.push_back("SecuencialPeor");
 	nombreAlgoritmoCaso.push_back("SecuencialMedio");
 	nombreAlgoritmoCaso.push_back("SecuencialMejor");
-} 
+
+
+    srand( (unsigned)time( NULL ) ); //srand(time(0));
+}
 TestAlgoritmo::~TestAlgoritmo()
 {
 }
@@ -41,20 +44,20 @@ TestAlgoritmo::~TestAlgoritmo()
 void TestAlgoritmo::costeTeorico(int numerocaso)
 	{
 	ofstream f(nombreAlgoritmoCaso[numerocaso]+"Teorico.dat");
-	system("cls"); 
+	system("cls");
 	cout<<endl<<"Busqueda " << nombreAlgoritmoCaso[numerocaso]+" Teorico";
 	cout<<"Tiempos de ejecucion "<<endl<<endl;
 	cout<<endl;;
 	cout<<"\tTalla\t\tTiempo (oe)"<<endl<<endl;
 	double tiempo=0;
-	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla) 
+	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
 		{
-			
+
 			switch (numerocaso){
 			case SECUENCIALPEOR: /*Caso peor (T(n)= 7n+9)*/
 			{
 	    		  tiempo = 7*talla+9;
-			}		
+			}
 			break;
 			case SECUENCIALMEDIO:/*Caso medio (T(n)= (7/2)n+9)*/
 			{
@@ -101,7 +104,7 @@ void TestAlgoritmo::costeTeorico(int numerocaso)
 			case SECUENCIALMEDIO:
 			{
 				/* Ejecutar el fichero por lotes (comandos)*/
-			system("start CmdMedioTeorico.gpl"); 
+			system("start CmdMedioTeorico.gpl");
 			system("cls");
 				//system((gpl).c_str());
 			cout <<endl<<"Grafica guardada en el fichero "<<nombreAlgoritmoCaso[numerocaso]+"Teorico"<<".pdf"<<endl;
@@ -123,13 +126,13 @@ void TestAlgoritmo::compararTeorico(int metodo1, int metodo2, int metodo3) {
 
 		//Graficas g;
 	ofstream f(nombreAlgoritmoCaso[metodo1]+nombreAlgoritmoCaso[metodo2]+nombreAlgoritmoCaso[metodo3]+"Teorico.dat");
-	system("cls"); 
+	system("cls");
 	cout<<endl<<"Busqueda Secuencial" << " Teorico";
 	cout<<". Tiempos de ejecucion "<<endl<<endl;
 	cout<<endl;;
 	cout<<"\tTalla\t\tTiempo (oe)"<<endl<<endl;
 	double tiempoPeor=0;int tiempoMedio=0; int tiempoMejor=0;
-	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla) 
+	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
 	{
 		/* Caso peor (T(n)= 7n+9) */
 		tiempoPeor = 7*talla+9;
