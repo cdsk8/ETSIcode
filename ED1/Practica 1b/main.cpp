@@ -23,6 +23,9 @@ char menu(){
 int main(void){
     productos prods("resumen.dat", "Ventas.dat");
 
+    prods.obtenerestadisticas(3, 1990, 2020);
+    return 0;
+
     char c;
     do{
         c = menu();
@@ -51,8 +54,7 @@ int main(void){
                 cout << "Introduzca el anno de inicio y fin: ";
                 cin >> annoInicio >> annoFin;
                 cout << "\n\n";
-                prods.obtenerestadisticas2(tipo, annoInicio, annoFin);
-                //prods.obtenerestadisticas(tipo, annoInicio, annoFin);
+                prods.obtenerestadisticas(tipo, annoInicio, annoFin);
             break;
             default:
                 cout << "\n\tIntroduzca una opcion valida.";

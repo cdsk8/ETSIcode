@@ -6,11 +6,9 @@
 using namespace std;
 
 bool compararFecha(Sfecha f1, Sfecha f2);
-void intercambiar(producto *p1, producto *p2);
-void Burbuja(producto **prods, int inicio, int fin);
 
-void intercambiar2(producto *p1, producto *p2);
-void Burbuja2(producto *prods, int inicio, int fin);
+void intercambiar(producto **p1, producto **p2);
+void Burbuja(producto **prods, int inicio, int fin);
 
 
 bool ventas::asignar(cadena Fichero,cadena FicheroResumen){
@@ -129,12 +127,15 @@ void ventas::resumirfichero(){
     detalle.close();    //Cerrar los archivos
 }
 
+
 void ventas::estadisticas(int tipo,int annoini,int annofin){
     resumirfichero();   //Actualizar resumen
 
     ifstream prods(ficheroresumen, ios::binary);    //Abrir el resumen
     prods.seekg(0, ios::end);   //ir al final
-    producto **tabla = new producto*[prods.tellg()/sizeof(producto)];   //Crear tabla dinamica de punteros a producto con el tamaño de la cantidad de productos totales
+
+    int Ntabla = SALTO;
+    producto **tabla = new producto*[Ntabla];   //Crear tabla dinamica de punteros a producto con el tamaño de la cantidad de productos totales
 
     if(tabla == NULL){
         cout << "ERROR al reservar memoria.\n";
@@ -142,17 +143,30 @@ void ventas::estadisticas(int tipo,int annoini,int annofin){
         prods.seekg(0, ios::beg);   //Volver al principio del archivo
         int i = 0;  //Variable de contador
         do{
-            tabla[i] = new producto; //Reservar para el nuevo producto
-            if(tabla[i] == NULL){
-                cout << "ERROR al reservar memoria.\n";
-            }else{
-                prods.read((char *) tabla[i], sizeof(producto));    //Cargar los datos
-                if(!prods.eof()){
-                    if((*tabla[i]).tipo == tipo &&
-                       annoini <= (*tabla[i]).ultimaventa.anno &&   //Si cumple las condiciones avanza el contador, para que no sea remplazada
-                       annofin >= (*tabla[i]).ultimaventa.anno)
-                        i++;
+            tabla[i] = new producto;
+            prods.read((char *) tabla[i], sizeof(producto));    //Cargar los datos
+            if(!prods.eof()){
+                if((*tabla[i]).tipo == tipo &&
+                  annoini <= (*tabla[i]).ultimaventa.anno &&   //Si cumple las condiciones avanza el contador, para que no sea remplazada
+                  annofin >= (*tabla[i]).ultimaventa.anno){
+                    i++;
+
+                    if(i == Ntabla){ //Ampliar SALTO Elementos
+                        producto **tablaNueva = new producto*[Ntabla+SALTO];
+                        if(tablaNueva == NULL){
+                            cout << "ERROR al reservar memoria.\n";
+                            //Aqui podría ir al final del fichero para evitar que el bucle continue
+                        }else{
+                            for(int j = 0; j < Ntabla; j++)
+                                tablaNueva[j] = tabla[j];
+                            delete [] tabla;
+                            tabla = tablaNueva;
+                            Ntabla += SALTO;
+                        }
+                    }
                 }
+                else
+                    delete tabla[i];
             }
         }while(!prods.eof());
         i--;    //La ultima lectura no fue remplazada o está vacia
@@ -166,7 +180,6 @@ void ventas::estadisticas(int tipo,int annoini,int annofin){
                  << "Unidades: " << (*tabla[i]).unidades <<"\n"
                  << "Importe: " << (*tabla[i]).importe <<"\n";
             cout << "______________________________________________\n\n";
-            delete tabla[i];    //Ir eliminando conforme se lee
         }
         delete [] tabla;
     }
@@ -174,9 +187,23 @@ void ventas::estadisticas(int tipo,int annoini,int annofin){
     prods.close();
 }
 
-void intercambiar(producto *p1, producto *p2){
-    producto tmp;
+void intercambiar(producto **p1, producto **p2){
+    if(*p2 > *p1){
+        cout << "Antiguo\n";
+        *p1 = *p2 - (unsigned int)*p1;
+        *p2 -= (unsigned int)*p1;
+        *p1 += (unsigned int)*p2;
+    }else{
+        cout << "Nuevo\n";
+        *p2 = *p1 - (unsigned int)*p2;
+        *p1 -= (unsigned int)*p2;
+        *p2 += (unsigned int)*p1;
+    }
 
+
+    return;
+
+    producto *tmp;
     tmp = *p1;
     *p1 = *p2;
     *p2 = tmp;
@@ -185,78 +212,11 @@ void Burbuja(producto **prods, int inicio, int fin){
     int pos,ele;
     for (pos=inicio; pos<fin; pos++)
         for (ele=fin; ele>pos; ele--)
-            if((*prods[ele-1]).importe > (*prods[ele]).importe)
-                intercambiar(prods[ele-1], prods[ele]);//Funciín genérica que tendrá que ser implementada
-}
-
-void ventas::estadisticas2(int tipo,int annoini,int annofin){
-    resumirfichero();   //Actualizar resumen
-
-    ifstream prods(ficheroresumen, ios::binary);    //Abrir el resumen
-    prods.seekg(0, ios::end);   //ir al final
-
-    int Ntabla = SALTO;
-    producto *tabla = new producto[Ntabla];   //Crear tabla dinamica de punteros a producto con el tamaño de la cantidad de productos totales
-
-    if(tabla == NULL){
-        cout << "ERROR al reservar memoria.\n";
-    }else{
-        prods.seekg(0, ios::beg);   //Volver al principio del archivo
-        int i = 0;  //Variable de contador
-        do{
-            prods.read((char *) &tabla[i], sizeof(producto));    //Cargar los datos
-            if(!prods.eof()){
-                if(tabla[i].tipo == tipo &&
-                  annoini <= tabla[i].ultimaventa.anno &&   //Si cumple las condiciones avanza el contador, para que no sea remplazada
-                  annofin >= tabla[i].ultimaventa.anno){
-                    i++;
-
-                    if(i == Ntabla){ //Ampliar SALTO Elementos
-                        producto *tablaNueva = new producto[Ntabla+SALTO];
-                        if(tablaNueva == NULL){
-                            cout << "ERROR al reservar memoria.\n";
-                            //Aqui podría ir al final del fichero para evitar que el bucle continue
-                        }else{
-                            for(int j = 0; j < Ntabla; j++)
-                                tablaNueva[j] = tabla[j];
-                            delete [] tabla;
-                            tabla = tablaNueva;
-                            Ntabla += SALTO;
-                        }
-                    }
-                }
-            }
-        }while(!prods.eof());
-        i--;    //La ultima lectura no fue remplazada o está vacia
-
-        Burbuja2(tabla, 0, i);   //Ordena de menor a mayor, porque la voy a leer al reves
-
-        cout << "-------------->Mejores productos<--------------\n\n";
-        for(;i >= 0; i--){
-            cout << "Fecha de venta: " << tabla[i].ultimaventa.dia <<"/"<< tabla[i].ultimaventa.mes <<"/"<< tabla[i].ultimaventa.anno <<"\n"
-                 << "Producto: " << tabla[i].nombre <<"\n"   //El nombre del producto
-                 << "Unidades: " << tabla[i].unidades <<"\n"
-                 << "Importe: " << tabla[i].importe <<"\n";
-            cout << "______________________________________________\n\n";
-        }
-        delete [] tabla;
-    }
-
-    prods.close();
-}
-
-void intercambiar2(producto *p1, producto *p2){
-    producto tmp;
-    tmp = *p1;
-    *p1 = *p2;
-    *p2 = tmp;
-}
-void Burbuja2(producto *prods, int inicio, int fin){
-    int pos,ele;
-    for (pos=inicio; pos<fin; pos++)
-        for (ele=fin; ele>pos; ele--)
-            if(prods[ele-1].importe > prods[ele].importe)
+            if((*prods[ele-1]).importe > (*prods[ele]).importe){
+                cout << "antes: " <<prods[ele-1]->importe<<"\n";
                 intercambiar(&prods[ele-1], &prods[ele]);//Función genérica que tendrá que ser implementada
+                cout << "despues: " <<prods[ele-1]->importe<<"\n";
+            }
 
 }
 

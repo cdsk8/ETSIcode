@@ -62,6 +62,8 @@ int ConjuntoInt::busquedaSecuencial (int valor)
 
 
 //Esto es mio
+
+
 int BusquedaSecuencial(int T[], int n, int valor){
 	int i = 0;
 	while (i < n && T[i] != valor)

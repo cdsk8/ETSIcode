@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1554206743 source:c:\users\usuario\desktop\practica 1b\main.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<cstring>
+	"ventas.h"
+	"productos.h"
+
+1554203908 c:\users\usuario\desktop\practica 1b\ventas.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1554203913 c:\users\usuario\desktop\practica 1b\productos.h
+	<fstream>
+	"ventas.h"
+
+1554203848 source:c:\users\usuario\desktop\practica 1b\productos.cpp
+	"productos.h"
+	<conio.h>
+
+1554184858 source:c:\users\usuario\desktop\practica 1b\vector.cpp
+	"vector.h"
+
+1554184858 c:\users\usuario\desktop\practica 1b\vector.h
+
+1554207752 source:c:\users\usuario\desktop\practica 1b\ventas.cpp
+	"ventas.h"
+	"productos.h"
+

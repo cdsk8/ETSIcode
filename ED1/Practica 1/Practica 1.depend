@@ -29,8 +29,9 @@
 	"productos.h"
 	<conio.h>
 
-<<<<<<< HEAD
-1553599957 source:c:\users\usuario\desktop\practica 1\main.cpp
+1553352283 D
+
+1554201787 source:c:\users\usuario\desktop\practica 1\main.cpp
 	<iostream>
 	<conio.h>
 	<stdlib.h>
@@ -38,25 +39,25 @@
 	"ventas.h"
 	"productos.h"
 
-1553599586 c:\users\usuario\desktop\practica 1\ventas.h
+1554201692 c:\users\usuario\desktop\practica 1\ventas.h
 	<iostream>
 	<fstream>
 	<cstring>
 
-1553600000 c:\users\usuario\desktop\practica 1\productos.h
+1554184858 c:\users\usuario\desktop\practica 1\productos.h
 	<fstream>
 	"ventas.h"
 
-1553599994 source:c:\users\usuario\desktop\practica 1\productos.cpp
+1554201815 source:c:\users\usuario\desktop\practica 1\productos.cpp
 	"productos.h"
 	<conio.h>
 
-1553418503 source:c:\users\usuario\desktop\practica 1\vector.cpp
+1554184858 source:c:\users\usuario\desktop\practica 1\vector.cpp
 	"vector.h"
 
-1553418503 c:\users\usuario\desktop\practica 1\vector.h
+1554184858 c:\users\usuario\desktop\practica 1\vector.h
 
-1553600727 source:c:\users\usuario\desktop\practica 1\ventas.cpp
+1554206288 source:c:\users\usuario\desktop\practica 1\ventas.cpp
 	"ventas.h"
 	"productos.h"
 
@@ -86,5 +87,5 @@
 
 1553418504 d:\practica 1\vector.h
 
-=======
->>>>>>> 606276cfaefa2170c3de792ac8e17e40001ffc30
+1553418504 276cfaefa2170c3de792ac8e17e40001ffc30
+

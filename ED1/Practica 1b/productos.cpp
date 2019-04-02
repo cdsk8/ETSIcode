@@ -138,6 +138,3 @@ void productos::actualizarresumen(){
 void productos::obtenerestadisticas(int tipo,int annoini,int annofin){
     ven.estadisticas(tipo, annoini, annofin);
 }
-void productos::obtenerestadisticas2(int tipo,int annoini,int annofin){
-    ven.estadisticas2(tipo, annoini, annofin);
-}
