@@ -35,8 +35,9 @@ void ConjuntoInt::GeneraVector (int tam)
 }
 int ConjuntoInt::generaKey()
 {
- return datos[tamano / 2];
- //return rand()%10000; //genera un número aleatorio entre 1 y 999
+	return datos[rand() % tamano];
+	//return datos[tamano / 2];
+	//return rand()%10000; //genera un número aleatorio entre 1 y 999
 }
 void ConjuntoInt::escribe()
 {

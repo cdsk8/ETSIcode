@@ -8,7 +8,7 @@
  *    gráfica correspondiente.
  */
 #include "Test.h"
-//#include "Constantes.h"
+#include "Constantes.h"
 #include "ConjuntoInt.h"
 #include "Mtime.h"
 #include <string>
@@ -17,10 +17,6 @@
 #include <iostream>
 using namespace std;
 
-const int SECUENCIALPEOR = 0, SECUENCIALMEDIO = 1, SECUENCIALMEJOR = 2;
-const int tallaIni = 1000,
-	tallaFin = 10000,
-	incTalla = 1000;
 const int REPETICIONES = 1e3;
 
 TestAlgoritmo::TestAlgoritmo()
@@ -84,26 +80,29 @@ void TestAlgoritmo::costeTeorico(int numerocaso)
 		switch (opc){
 		case 's':
 		case 'S':{
-			int orden;
+			
+			int casos[1] = { numerocaso };
+			visualizarResultados(casos, 1, true);
+
+			system("start tmp.gpl"); system("cls");
+
+			/*
 			switch (numerocaso)
 			{
 			case SECUENCIALMEJOR:
 				{
-					/* Ejecutar el fichero por lotes (comandos)*/
 			system("start CmdMejorTeorico.gpl"); system("cls");
 			cout <<endl<<"Grafica guardada en el fichero "<<nombreAlgoritmoCaso[numerocaso]+"Teorico"<<".pdf"<<endl;
 				}
 				break;
 			case SECUENCIALPEOR:
 				{
-					/* Ejecutar el fichero por lotes (comandos)*/
 			system("start CmdPeorTeorico.gpl"); system("cls");
 			cout <<endl<<"Grafica guardada en el fichero "<<nombreAlgoritmoCaso[numerocaso]+"Teorico"<<".pdf"<<endl;
 				}
 				break;
 			case SECUENCIALMEDIO:
 			{
-				/* Ejecutar el fichero por lotes (comandos)*/
 			system("start CmdMedioTeorico.gpl");
 			system("cls");
 				//system((gpl).c_str());
@@ -115,6 +114,7 @@ void TestAlgoritmo::costeTeorico(int numerocaso)
 			}
 			default: {cout <<"Grafica no guardada en fichero "<<endl;}
 			break;
+						 */
 						 }
 		}
 	cout<<endl;
@@ -154,13 +154,22 @@ void TestAlgoritmo::compararTeorico(int metodo1, int metodo2, int metodo3) {
 		cin>>opc;
 		switch (opc){
 		case 's':
-		case 'S':{
-			/* Ejecutar el fichero por lotes (comandos)*/
+		case 'S': {
+
+			int casos[1] = { metodo1, metodo2, metodo3 };
+			visualizarResultados(casos, 3, true);
+
+			system("start tmp.gpl"); system("cls");
+
+
+			/* Ejecutar el fichero por lotes (comandos)
 			system("start CmdCompararTeorico.gpl"); system("cls");
 			//system((gpl).c_str());
 			cout <<endl<<"Grafica guardada en el fichero "<<nombreAlgoritmoCaso[metodo1]+nombreAlgoritmoCaso[metodo2]+nombreAlgoritmoCaso[metodo3]+"Teorico"<<".pdf"<<endl;
-						 }
-						 break;
+
+			*/
+			break;
+		}
 		default: cout <<"Grafica no guardada en fichero "<<endl;
 			break;
 		}
@@ -173,65 +182,65 @@ void TestAlgoritmo::costeEmpirico(int numerocaso)
 {
 	ofstream f(nombreAlgoritmoCaso[numerocaso] + "Empirico.dat");
 	system("cls");
+	cout << "ME LLAMAN: " << numerocaso << "  espero: " << SECUENCIALPEOR;
 	cout << endl << "Busqueda " << nombreAlgoritmoCaso[numerocaso] + " Empirico";
 	cout << "Tiempos de ejecucion " << endl << endl;
 	cout << endl;;
 	cout << "\tTalla\t\tTiempo (ms)" << endl << endl;
-	double tiempo = 0;
+	double tiempo;
 	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
 	{
+		tiempo = 0;
 		LARGE_INTEGER t_ini, t_fin;
 		Mtime t;
 
+
+		ConjuntoInt *conjunto = new ConjuntoInt(talla);
 		switch (numerocaso) {
 		case SECUENCIALPEOR: /*Caso peor (T(n)= 7n+9)*/
 		{
-			for (int i = 0; i < REPETICIONES; i++) {
-				ConjuntoInt conjunto(talla);
-				conjunto.GeneraVector(talla);
+			conjunto->GeneraVector(talla);
 
-				QueryPerformanceCounter(&t_ini);
+			QueryPerformanceCounter(&t_ini);
 
-				conjunto.busquedaSecuencial(-1);
+			conjunto->busquedaSecuencial(-1);
 
-				QueryPerformanceCounter(&t_fin);
-				tiempo += t.performancecounter_diff(&t_fin, &t_ini);
-			}
+			QueryPerformanceCounter(&t_fin);
+			tiempo += t.performancecounter_diff(&t_fin, &t_ini);
 		}
 		break;
 		case SECUENCIALMEDIO:/*Caso medio (T(n)= (7/2)n+9)*/
 		{
 			for (int i = 0; i < REPETICIONES; i++) {
-				ConjuntoInt conjunto(talla);
-				conjunto.GeneraVector(talla);
+				conjunto->GeneraVector(talla);
 
 				QueryPerformanceCounter(&t_ini);
 
-				conjunto.busquedaSecuencial(conjunto.generaKey());
+				conjunto->busquedaSecuencial(conjunto->generaKey());
 
 				QueryPerformanceCounter(&t_fin);
 				tiempo += t.performancecounter_diff(&t_fin, &t_ini);
 			}
+
+			tiempo /= REPETICIONES;
 		}
 		break;
 		case SECUENCIALMEJOR:/*Caso mejor (T(n)= 9)*/
 		{
-			for (int i = 0; i < REPETICIONES; i++) {
-				ConjuntoInt conjunto(talla);
-				conjunto.GeneraVector(talla);
+			conjunto->GeneraVector(talla);
 
-				QueryPerformanceCounter(&t_ini);
+			QueryPerformanceCounter(&t_ini);
 
-				conjunto.busquedaSecuencial(conjunto.getPrimero());
+			conjunto->busquedaSecuencial(conjunto->getPrimero());
 
-				QueryPerformanceCounter(&t_fin);
-				tiempo += t.performancecounter_diff(&t_fin, &t_ini);
-			}
+			QueryPerformanceCounter(&t_fin);
+			tiempo += t.performancecounter_diff(&t_fin, &t_ini);
 		}
 		break;
 		}
 
-		tiempo *= 1000.0/REPETICIONES;
+		delete conjunto;
+		tiempo *= 1000.0;
 
 
 		f << talla << "\t" << tiempo << endl;
@@ -248,26 +257,31 @@ void TestAlgoritmo::costeEmpirico(int numerocaso)
 	switch (opc) {
 	case 's':
 	case 'S': {
+
+		int casos[3] = { numerocaso };
+		visualizarResultados(casos, 1, false);
+
+		system("start tmp.gpl"); system("cls");
+
+
+		/*
 		int orden;
 		switch (numerocaso)
 		{
 		case SECUENCIALMEJOR:
 		{
-			/* Ejecutar el fichero por lotes (comandos)*/
 			system("start CmdMejorEmpirico.gpl"); system("cls");
 			cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[numerocaso] + "Empirico" << ".pdf" << endl;
 		}
 		break;
 		case SECUENCIALPEOR:
 		{
-			/* Ejecutar el fichero por lotes (comandos)*/
 			system("start CmdPeorEmpirico.gpl"); system("cls");
 			cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[numerocaso] + "Empirico" << ".pdf" << endl;
 		}
 		break;
 		case SECUENCIALMEDIO:
 		{
-			/* Ejecutar el fichero por lotes (comandos)*/
 			system("start CmdMedioEmpirico.gpl");
 			system("cls");
 			//system((gpl).c_str());
@@ -277,8 +291,9 @@ void TestAlgoritmo::costeEmpirico(int numerocaso)
 		default: {cout << "Error caso " << endl; }
 				 break;
 		}
-	default: {cout << "Grafica no guardada en fichero " << endl; }
+		default: {cout << "Grafica no guardada en fichero " << endl; }
 			 break;
+		*/
 	}
 	}
 	cout << endl;
@@ -300,27 +315,29 @@ void TestAlgoritmo::compararEmpirico(int metodo1, int metodo2, int metodo3) {
 	LARGE_INTEGER t_ini, t_fin;
 	Mtime t;
 
+
 	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
 	{
+		ConjuntoInt *conjunto = new ConjuntoInt(talla);
 		for (int i = 0; i < REPETICIONES; i++) {
-			ConjuntoInt conjunto(talla);
-			conjunto.GeneraVector(talla);
+			conjunto->GeneraVector(talla);
 
 			QueryPerformanceCounter(&t_ini);
-			conjunto.busquedaSecuencial(-1);
+			conjunto->busquedaSecuencial(-1);
 			QueryPerformanceCounter(&t_fin);
 			tiempoPeor += t.performancecounter_diff(&t_fin, &t_ini);
 
 			QueryPerformanceCounter(&t_ini);
-			conjunto.busquedaSecuencial(conjunto.generaKey());
+			conjunto->busquedaSecuencial(conjunto->generaKey());
 			QueryPerformanceCounter(&t_fin);
 			tiempoMedio += t.performancecounter_diff(&t_fin, &t_ini);
 
 			QueryPerformanceCounter(&t_ini);
-			conjunto.busquedaSecuencial(conjunto.getPrimero());
+			conjunto->busquedaSecuencial(conjunto->getPrimero());
 			QueryPerformanceCounter(&t_fin);
 			tiempoMejor += t.performancecounter_diff(&t_fin, &t_ini);
 		}
+		delete conjunto;
 
 		tiempoPeor *= 1000.0 / REPETICIONES;
 		tiempoMedio *= 1000.0 / REPETICIONES;
@@ -342,10 +359,16 @@ void TestAlgoritmo::compararEmpirico(int metodo1, int metodo2, int metodo3) {
 	switch (opc) {
 	case 's':
 	case 'S': {
+
+		int casos[3] = { metodo1, metodo2, metodo3 };
+		visualizarResultados(casos, 3, false);
+
+		system("start tmp.gpl"); system("cls");
+
 		/* Ejecutar el fichero por lotes (comandos)*/
-		system("start CmdCompararEmpirico.gpl"); system("cls");
+		//system("start CmdCompararEmpirico.gpl"); system("cls");
 		//system((gpl).c_str());
-		cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[metodo1] + nombreAlgoritmoCaso[metodo2] + nombreAlgoritmoCaso[metodo3] + "Empirico" << ".pdf" << endl;
+		//cout << endl << "Grafica guardada en el fichero " << nombreAlgoritmoCaso[metodo1] + nombreAlgoritmoCaso[metodo2] + nombreAlgoritmoCaso[metodo3] + "Empirico" << ".pdf" << endl;
 	}
 			  break;
 	default: cout << "Grafica no guardada en fichero " << endl;
@@ -376,3 +399,97 @@ void TestAlgoritmo::comprobarAlgoritmo() {
 	cin.ignore();
 	cin.get();
 }
+
+
+string generarNombre(int caso[], int nCasos, bool medicion) {
+	string cadena = "";
+
+	cadena += "Secuencial";
+	for (int i = 0; i < nCasos; i++) {
+		switch (caso[i]) {
+		case SECUENCIALPEOR:
+			cadena += "Peor";
+			break;
+		case SECUENCIALMEDIO:
+			cadena += "Medio";
+			break;
+		case SECUENCIALMEJOR:
+			cadena += "Mejor";
+			break;
+		}
+	}
+	if (medicion)
+		cadena += "Teorico";
+	else
+		cadena += "Empirico";
+
+	return cadena;
+}
+
+void visualizarResultados(int caso[], int nCasos, bool medicion) {
+	/*	MEDICION
+		False: teorico
+		True:  empirico
+	*/
+
+	ofstream file("tmp.gpl");
+
+	file << "set title \"Secuencial" << generarNombre(caso, nCasos, medicion) << "\"\n"
+		<< "set key top left vertical inside\n"
+		<< "set grid\n"
+		<< "set xlabel \"Talla (n)\"\n"
+		<< "set ylabel \"Tiempo (" << (medicion?"OE":"ms") << ")\"\n";
+	
+	if (nCasos == 1) {
+		for (int i = 0; i < nCasos; i++) {
+			switch (caso[i]) {
+			case SECUENCIALPEOR:
+				file << "N(x) = a*x + b\n"
+					<< "fit N(x) \"" << generarNombre(caso, nCasos, medicion) << ".dat\" using 1:2 via a,b";
+				break;
+			case SECUENCIALMEDIO:
+				file << "M(x) = t*x + u\n"
+					<< "fit M(x) \"" << generarNombre(caso, nCasos, medicion) << ".dat\" using 1:2 via t,u";
+				break;
+			case SECUENCIALMEJOR:
+				file << "C(x) = w\n"
+					<< "fit C(x) \"" << generarNombre(caso, nCasos, medicion) << ".dat\" using 1:2 via w";
+				break;
+			}
+		}
+	}
+	
+
+	file << "\nplot ";
+	for (int i = 0; i < nCasos; i++) {
+		if (i = 0)
+			file << "plot ";
+
+		file << "\"" << generarNombre(caso, nCasos, medicion) << ".dat\" using 1:2 with lines title \"" << generarNombre(caso, nCasos, medicion) << "\"";
+		if (nCasos == 1) {
+			switch (caso[i]) {
+			case SECUENCIALPEOR:
+				file << ", N(x)";
+				break;
+			case SECUENCIALMEDIO:
+				file << ", M(x)";
+				break;
+			case SECUENCIALMEJOR:
+				file << ", C(x)";
+				break;
+			}
+		}
+
+		if (i != nCasos-1)
+			file << ", ";
+	}
+
+	file << "\nset terminal pdf\n"
+		<< "set output \"" << generarNombre(caso, nCasos, medicion) << ".pdf\"\n"
+		<< "replot\n"
+		<< "pause 5 \"Pulsa Enter para continuar...\"";
+
+
+	file.close();
+}
+

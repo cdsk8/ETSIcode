@@ -47,4 +47,6 @@ public:
 	void compararEmpirico(int metodo1, int metodo2, int metodo3);
 };
 
+void visualizarResultados(int caso[], int nCasos, bool medicion);
+
 #endif

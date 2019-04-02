@@ -7,7 +7,7 @@ set ylabel "Tiempo (OE)"
 plot "SecuencialMejorTeorico.dat" using 1:2
 C(x) = a
 fit C(x) "SecuencialMejorTeorico.dat" using 1:2 via a
-plot "SecuencialMejorTeorico.dat" using 1:2  title "SecuencialMejorTeorico",C(x)
+plot "SecuencialMejorTeorico.dat" using 1:2 with lines title "SecuencialMejorTeorico",C(x)
 set terminal pdf
 set output "SecuencialMejorTeorico.pdf"
 replot

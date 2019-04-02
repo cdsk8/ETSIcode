@@ -5,10 +5,12 @@ set grid
 set xlabel "Talla (n)"
 set ylabel "Tiempo (ms)"
 
-set xrange [1000:10000]
-set yrange [0:0.2]
+#set xrange [1000:10000]
+#set yrange [0:0.2]
 
-plot "SecuencialMedioEmpirico.dat" using 1:2 with lines title "SecuencialMedioEmpirico"
+N(x) = a*x + b
+fit N(x) "SecuencialMedioEmpirico.dat" using 1:2 via a,b
+plot "SecuencialMedioEmpirico.dat" using 1:2 with lines title "SecuencialMedioEmpirico", N(x)
 set terminal pdf
 set output "SecuencialMedioEmpirico.pdf"
 replot

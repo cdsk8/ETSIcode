@@ -3,6 +3,7 @@
 #include "Mtime.h"
 #include "Test.h"
 #include "ConjuntoInt.h"
+#include "Constantes.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int menuCasos() {
 		cout << "\n\n"
 			<< "-----        Caso a estudiar para la busqueda secuencial           -----\n\n"
 			<< "     1.- Caso peor\n"
-			<< "     1.- Caso medio\n"
+			<< "     2.- Caso medio\n"
 			<< "     3.- Caso mejor\n"
 			<< "  -------------------\n"
 			<< "   Elija una opcion:";
@@ -134,7 +135,6 @@ int menu(){
 
 int main(){
 	int opt;
-
 	TestAlgoritmo test;
 
 	do {
@@ -144,28 +144,28 @@ int main(){
 			test.comprobarAlgoritmo();
 			break;
 		case 2://Teorico caso Peor
-			test.costeTeorico(0);
+			test.costeTeorico(SECUENCIALPEOR);
 			break;
 		case 3://Teorico caso Medio
-			test.costeTeorico(1);
+			test.costeTeorico(SECUENCIALMEDIO);
 			break;
 		case 4://Teorico caso Mejor
-			test.costeTeorico(2);
+			test.costeTeorico(SECUENCIALMEJOR);
 			break;
 		case 5://Teorico Comparativa
-			test.compararTeorico(0, 1, 2);
+			test.compararTeorico(SECUENCIALPEOR, SECUENCIALMEDIO, SECUENCIALMEJOR);
 			break;
 		case 6://Practico caso Peor
-			test.costeEmpirico(0);
+			test.costeEmpirico(SECUENCIALPEOR);
 			break;
 		case 7://Practico caso Medio
-			test.costeEmpirico(1);
+			test.costeEmpirico(SECUENCIALMEDIO);
 			break;
 		case 8://Practico caso Mejor
-			test.costeEmpirico(2);
+			test.costeEmpirico(SECUENCIALMEJOR);
 			break;
 		case 9://Practico Comparativa
-			test.compararEmpirico(0, 1, 2);
+			test.compararEmpirico(SECUENCIALPEOR, SECUENCIALMEDIO, SECUENCIALMEJOR);
 			break;
 		case 0://Salir
 			break;
