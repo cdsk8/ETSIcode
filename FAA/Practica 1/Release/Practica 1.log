@@ -1,0 +1,10 @@
+﻿  ComparacionAlgoritmos.cpp
+  ConjuntoInt.cpp
+  Mtime.cpp
+  Test.cpp
+c:\users\margaret\desktop\etsicode\faa\practica 1\test.cpp(20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\margaret\desktop\etsicode\faa\practica 1\test.cpp(111): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Generando código
+  All 275 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  Practica 1.vcxproj -> C:\Users\Margaret\Desktop\ETSIcode\FAA\Practica 1\Release\Practica 1.exe

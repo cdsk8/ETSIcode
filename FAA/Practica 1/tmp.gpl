@@ -1,0 +1,12 @@
+set title "SecuencialSecuencialMejorEmpirico"
+set key top left vertical inside
+set grid
+set xlabel "Talla (n)"
+set ylabel "Tiempo (ms)"
+C(x) = w
+fit C(x) "SecuencialMejorEmpirico.dat" using 1:2 via w
+plot "SecuencialMejorEmpirico.dat" using 1:2 with lines title "SecuencialMejorEmpirico", C(x)
+set terminal pdf
+set output "SecuencialMejorEmpirico.pdf"
+replot
+pause 5 "Pulsa Enter para continuar..."
