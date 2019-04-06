@@ -250,6 +250,11 @@ void TestAlgoritmo::compararEmpirico(int metodo1, int metodo2, int metodo3) {
 
 	for (int talla = tallaIni; talla <= tallaFin; talla += incTalla)
 	{
+
+		tiempoPeor = 0;
+		tiempoMedio = 0;
+		tiempoMejor = 0;
+
 		ConjuntoInt *conjunto = new ConjuntoInt(talla);
 		for (int i = 0; i < REPETICIONES; i++) {
 			conjunto->GeneraVector(talla);
@@ -281,6 +286,7 @@ void TestAlgoritmo::compararEmpirico(int metodo1, int metodo2, int metodo3) {
 		/*Visualizar en pantalla*/
 		cout << "\t" << talla << "\t\t" << setw(10) << setprecision(2) << (double)tiempoPeor << " \t" << setw(10) << setprecision(2) << (double)tiempoMedio << " \t" << setw(10) << setprecision(2) << (double)tiempoMejor << " \t\t" << endl;
 		cout << endl;
+
 	}
 	f.close();
 	cout << endl << "Datos guardados en el fichero " << nombreAlgoritmoCaso[metodo1] + nombreAlgoritmoCaso[metodo2] + nombreAlgoritmoCaso[metodo3] << "Empirico.dat " << endl;

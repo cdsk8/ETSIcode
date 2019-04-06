@@ -68,7 +68,7 @@ int BusquedaSecuencial(int T[], int n, int valor){
 	int i = 0;
 	while (i < n && T[i] != valor)
 		i++;
-	if (T[i] == valor)
+	if (i < n && T[i] == valor)
 		return i;
 	return -1;
 }
