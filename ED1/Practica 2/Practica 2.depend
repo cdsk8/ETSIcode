@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1554988705 source:c:\users\usuario\desktop\ed1\practica 2\main.cpp
+	<iostream>
+	"cola.h"
+
+1554988617 c:\users\usuario\desktop\ed1\practica 2\cola.h
+
+1554988758 source:c:\users\usuario\desktop\ed1\practica 2\cola.cpp
+	"cola.h"
+	<iostream>
+
+1554992744 source:c:\users\arlin-t2\desktop\etsicode\ed1\practica 2\main.cpp
+	<iostream>
+	"cola.h"
+
+1554992934 c:\users\arlin-t2\desktop\etsicode\ed1\practica 2\cola.h
+
+1554993576 source:c:\users\arlin-t2\desktop\etsicode\ed1\practica 2\cola.cpp
+	"cola.h"
+	<iostream>
+

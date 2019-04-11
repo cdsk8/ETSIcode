@@ -29,7 +29,6 @@ public:
     void mostrarventas();  //CHECK
     void resumirfichero();
     void estadisticas(int tipo,int annoini,int annofin);
-    void estadisticas2(int tipo,int annoini,int annofin);
     bool asignar(cadena Fichero,cadena FicheroResumen);  //CHECK
 };
 

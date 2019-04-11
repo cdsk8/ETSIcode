@@ -1,6 +1,0 @@
-#ifndef VECTOR_H_INCLUDED
-#define VECTOR_H_INCLUDED
-
-
-
-#endif // VECTOR_H_INCLUDED

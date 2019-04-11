@@ -89,3 +89,33 @@
 
 1553418504 276cfaefa2170c3de792ac8e17e40001ffc30
 
+1554755607 source:c:\users\usuario\desktop\ed1\practica 1\practica 1a\vector.cpp
+	"vector.h"
+
+1554755607 c:\users\usuario\desktop\ed1\practica 1\practica 1a\vector.h
+
+1554983233 source:c:\users\usuario\desktop\ed1\practica 1\practica 1a\main.cpp
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<cstring>
+	"ventas.h"
+	"productos.h"
+
+1554983220 c:\users\usuario\desktop\ed1\practica 1\practica 1a\ventas.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1554983226 c:\users\usuario\desktop\ed1\practica 1\practica 1a\productos.h
+	<fstream>
+	"ventas.h"
+
+1554984772 source:c:\users\usuario\desktop\ed1\practica 1\practica 1a\productos.cpp
+	"productos.h"
+	<conio.h>
+
+1554984912 source:c:\users\usuario\desktop\ed1\practica 1\practica 1a\ventas.cpp
+	"ventas.h"
+	"productos.h"
+

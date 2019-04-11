@@ -32,7 +32,6 @@ public:
     bool anadirventa();
     void actualizarresumen();
     void obtenerestadisticas(int tipo,int annoini,int annofin);
-    void obtenerestadisticas2(int tipo,int annoini,int annofin);
 };
 
 #endif // PRODUCTOS_H_INCLUDED
