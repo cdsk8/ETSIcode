@@ -102,16 +102,18 @@ int main()
 			test.comparar(getConstante(opt / 10), getConstante(opt % 10));
 		} else {
 			switch(opt) {
-				case 1:	//Probar los algoritmos
+				case 1:	//Medir
 					test.comprobarMetodosOrdenacion();
 				break;
 				case 2:
 				case 3:
-				case 4:	//Medir burbuja
+				case 4:	//Probar
 					test.casoMedio(getConstante(opt-1));
 				break;
 			}
 		}
 	} while (opt != 0);
+
+	system("taskkill /F /T /IM wgnuplot.exe");
 	return 0;
 };

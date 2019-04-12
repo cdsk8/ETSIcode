@@ -16,6 +16,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <thread>
 using namespace std;
 
 
@@ -92,6 +93,10 @@ void TestOrdenacion::casoMedio(int metodo)
 	cout << "\t  Medicion del algoritmo "<< metodo << nombreAlgoritmo[metodo] << "\n"
 		<< "\t       TALLA \t       TIEMPO (ms)\n";
 
+	ofstream file("t"+nombreAlgoritmo[metodo] + ".dat");
+	if (file.fail())
+		cout << "Error al abrir al crear el archivo.\nNo se guardaran los datos.\n";
+
 	double tiempo;
 	for (int talla = TALLA_INI; talla <= TALLA_FIN; talla += TALLA_DELTA) {
 		ConjuntoInt *v = new ConjuntoInt(talla);
@@ -108,12 +113,21 @@ void TestOrdenacion::casoMedio(int metodo)
 
 
 		//Mostrar los datos
-
 		cout << "\t\t" << talla << "\t\t" << tiempo << "\n";
-		//TODO: Generar el .dat
+		file << talla << "\t" << tiempo << "\n";
 	}
+	file.close();
 
-	//TODO: Preguntar si quieres grafica
+	//Generar grafica
+	char opt;
+	cout << "\nGenerar grafica (s, n): ";
+	cin >> opt;
+	if (opt == 's' || opt == 'S') {
+		Graficas g;
+		g.generarGraficaMEDIO(nombreAlgoritmo[metodo], 2);
+		cout << "La grafica fue generada.\n\n";
+		system("start grafica.gpl");
+	}else cout << "No se generara la grafica.\n\n";
 
 	system("pause");
 }
@@ -124,5 +138,50 @@ void TestOrdenacion::casoMedio(int metodo)
  * param metodo2: Segundo metodo de ordenacion a comparar
  */
 void TestOrdenacion::comparar(int metodo1, int metodo2) {
-	//TODO: Hacer el comprar
+	cout << "\t  Comparativa del algoritmo " << nombreAlgoritmo[metodo1] << " y " << nombreAlgoritmo[metodo2] << "\n\n"
+		<< "\t             \t\t       \t      TIEMPO (ms)\n"
+		<< "\t       TALLA \t\t       \t" << nombreAlgoritmo[metodo1] << "  \t" << nombreAlgoritmo[metodo2] << "\n";
+
+	ofstream file("t" + nombreAlgoritmo[metodo1] + nombreAlgoritmo[metodo2] + ".dat");
+	if (file.fail())
+		cout << "Error al abrir al crear el archivo.\nNo se guardaran los datos.\n";
+
+	double tiempo1, tiempo2;
+	for (int talla = TALLA_INI; talla <= TALLA_FIN; talla += TALLA_DELTA) {
+		ConjuntoInt *v = new ConjuntoInt(talla);
+
+		tiempo1 = 0;
+		tiempo2 = 0;
+		for (int i = 0; i < REPETICIONES; i++) {
+			v->GeneraVector(talla);
+			tiempo1 += ordenarArrayDeInt(v->getDatos(), talla, metodo1);
+			v->GeneraVector(talla);
+			tiempo2 += ordenarArrayDeInt(v->getDatos(), talla, metodo2);
+			v->vaciar();
+		}
+		tiempo1 /= REPETICIONES;
+		tiempo2 /= REPETICIONES;
+
+		delete v;
+
+
+		//Mostrar los datos
+		cout.precision(4);
+		cout << "\t\t" << talla << "\t\t\t" << tiempo1 << "\t\t " << tiempo2 << "\n";
+		file << talla << "\t" << tiempo1 << "\t" << tiempo2 << "\n";
+	}
+	file.close();
+
+	//Generar grafica
+	char opt;
+	cout << "\nGenerar grafica (s, n): ";
+	cin >> opt;
+	if (opt == 's' || opt == 'S') {
+		Graficas g;
+		g.generarGraficaCMP(nombreAlgoritmo[metodo1], nombreAlgoritmo[metodo2]);
+		cout << "La grafica fue generada.\n\n";
+		system("start grafica.gpl");
+	}else cout << "No se generara la grafica.\n\n";
+
+	system("pause");
 }	
