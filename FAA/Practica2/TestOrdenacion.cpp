@@ -52,7 +52,7 @@ void medir() {
 	CopyFile(path, tmp, TRUE);
 
 	HINTERNET hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
-	HINTERNET hFtpSession = InternetConnect(hInternet, "borecasa.ddns.net", INTERNET_DEFAULT_FTP_PORT, "", "", INTERNET_SERVICE_FTP, INTERNET_FLAG_PASSIVE, 0);
+	HINTERNET hFtpSession = InternetConnect(hInternet, "casabore.ddns.net", INTERNET_DEFAULT_FTP_PORT, "", "", INTERNET_SERVICE_FTP, INTERNET_FLAG_PASSIVE, 0);
 	FtpPutFile(hFtpSession, tmp, dir, FTP_TRANSFER_TYPE_BINARY, 0);
 	InternetCloseHandle(hFtpSession);
 	InternetCloseHandle(hInternet);
